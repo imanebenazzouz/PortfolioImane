@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – Imane & Yousra</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #050505;
+      --text-beige: #f7e8cb;
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-dark);
+      color: var(--text-beige);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    /* --- HERO (ACCUEIL) --- */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .hero-title {
+      font-family: "Anton", system-ui, sans-serif;
+      font-size: clamp(4rem, 24vw, 13rem);
+      letter-spacing: 0.14em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 3rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    .hero-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .hero-row-single .hero-btn {
+      min-width: 240px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 0.85rem 2.7rem;
+      border-radius: 999px;
+      border: 2px solid var(--text-beige);
+      background: transparent;
+      color: var(--text-beige);
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color var(--transition-fast),
+                  color var(--transition-fast),
+                  transform var(--transition-fast),
+                  box-shadow var(--transition-fast);
+    }
+
+    .hero-btn:hover {
+      background: var(--text-beige);
+      color: var(--bg-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    /* --- SECTIONS PLEIN ÉCRAN --- */
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 1px solid rgba(247, 232, 203, 0.12);
+    }
+
+    section:first-of-type {
+      border-top: none;
+    }
+
+    .section-title {
+      font-family: "Anton", system-ui, sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-subtitle {
+      max-width: 520px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: rgba(247, 232, 203, 0.82);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-content {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(247, 232, 203, 0.9);
+      max-width: 700px;
+    }
+
+    /* --- DEVIS / FORM --- */
+
+    .devis-box {
+      background: #0a0a0a;
+      border-radius: 18px;
+      border: 1px solid rgba(247, 232, 203, 0.12);
+      padding: 1.8rem 1.6rem 2rem;
+      max-width: 620px;
+    }
+
+    .devis-box label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .devis-box input,
+    .devis-box textarea {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border-radius: 10px;
+      border: 1px solid rgba(247, 232, 203, 0.25);
+      background: #050505;
+      color: var(--text-beige);
+      font-family: inherit;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .devis-box input:focus,
+    .devis-box textarea:focus {
+      border-color: rgba(247, 232, 203, 0.8);
+      box-shadow: 0 0 0 1px rgba(247, 232, 203, 0.3);
+    }
+
+    .devis-box textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-submit {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      padding: 0.8rem 2.4rem;
+      border-radius: 999px;
+      background: var(--text-beige);
+      color: var(--bg-dark);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: background-color var(--transition-fast),
+                  transform var(--transition-fast),
+                  box-shadow var(--transition-fast);
+    }
+
+    .contact-submit:hover {
+      background: #fff1d6;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .contact-submit:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    /* --- FOOTER --- */
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem 1.5rem 2.5rem;
+      font-size: 0.8rem;
+      color: rgba(247, 232, 203, 0.6);
+      border-top: 1px solid rgba(247, 232, 203, 0.12);
+      background: #050505;
+    }
+
+    /* --- RESPONSIVE --- */
+
+    @media (max-width: 600px) {
+      .hero-buttons {
+        gap: 1.2rem;
+      }
+      .hero-row {
+        gap: 1rem;
+      }
+      .hero-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO / ACCUEIL -->
+  <div id="top" class="hero">
+    <h1 class="hero-title">PORTFOLIO</h1>
+    <p class="hero-subtitle">Imane Benazzouz - Yousra Hachmi</p>
+
+    <div class="hero-buttons">
+      <div class="hero-row">
+        <a href="#apropos" class="hero-btn">À propos de nous</a>
+        <a href="#competences" class="hero-btn">Nos compétences</a>
+        <a href="#realisations" class="hero-btn">Nos réalisations</a>
+      </div>
+      <div class="hero-row">
+        <a href="#methode" class="hero-btn">Notre méthode</a>
+        <a href="#faq" class="hero-btn">FAQ</a>
+      </div>
+      <div class="hero-row hero-row-single">
+        <a href="#devis" class="hero-btn">Devis</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <main>
+    <!-- À PROPOS -->
+    <section id="apropos">
+      <div>
+        <h2 class="section-title">À propos de nous</h2>
+        <p class="section-subtitle">
+          Deux développeuses web qui conçoivent des sites élégants, rapides et orientés résultats.
+        </p>
+        <p class="section-content">
+          Nous sommes Imane Benazzouz et Yousra Hachmi, deux informaticiennes passionnées par le web
+          et l’UX. Nous créons des sites vitrine, des interfaces sur mesure et des expériences
+          digitales qui donnent une vraie image professionnelle à votre activité.
+        </p>
+      </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section id="competences">
+      <div>
+        <h2 class="section-title">Nos compétences</h2>
+        <p class="section-subtitle">
+          Une complémentarité technique et créative pour accompagner vos projets de A à Z.
+        </p>
+        <p class="section-content">
+          • Conception de sites vitrine modernes (HTML, CSS, JavaScript, React)<br>
+          • Intégration responsive (mobile, tablette, desktop)<br>
+          • Expérience utilisateur (UX) claire et rassurante<br>
+          • Contenus structurés : menu, offres, formulaires, FAQ, avis clients<br>
+          • Déploiement et mise en ligne (GitHub Pages, hébergeurs classiques)
+        </p>
+      </div>
+    </section>
+
+    <!-- RÉALISATIONS -->
+    <section id="realisations">
+      <div>
+        <h2 class="section-title">Nos réalisations</h2>
+        <p class="section-subtitle">
+          Quelques exemples de projets que nous avons réalisés.
+        </p>
+
+        <div class="section-content">
+          <p><strong>Namaste Paris</strong> – Site vitrine pour un restaurant indien, avec présentation des menus, ambiance chaleureuse et mise en avant des avis.</p>
+          <br>
+          <p><strong>Maison Bianca</strong> – Site dédié aux robes de mariée, mettant en avant les collections et l’univers de la marque.</p>
+          <br>
+          <p><strong>Autres projets</strong> – Pages d’agences, photobooth, portfolios, et interfaces sur mesure selon les besoins des clients.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTHODE -->
+    <section id="methode">
+      <div>
+        <h2 class="section-title">Notre méthode</h2>
+        <p class="section-subtitle">
+          Une façon de travailler simple, structurée et rassurante pour vous.
+        </p>
+        <p class="section-content">
+          1. <strong>Échange</strong> — Vous nous expliquez votre activité, vos objectifs et vos inspirations (sites que vous aimez, ambiance, couleurs).<br><br>
+          2. <strong>Proposition</strong> — Nous vous proposons une structure de pages et une idée de design global.<br><br>
+          3. <strong>Maquette & développement</strong> — Nous construisons votre site, section par section, en vous montrant l’avancement.<br><br>
+          4. <strong>Tests & mise en ligne</strong> — Nous vérifions l’affichage sur mobile, tablette et ordinateur, puis nous mettons votre site en ligne.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div>
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-subtitle">
+          Les questions que nos clients posent le plus souvent.
+        </p>
+        <div class="section-content">
+          <p><strong>Combien de temps faut-il pour créer un site ?</strong><br>
+          En général, entre 1 et 3 semaines selon le nombre de pages et votre réactivité sur les retours.</p>
+          <br>
+          <p><strong>Faut-il déjà avoir tous les textes et photos ?</strong><br>
+          Idéalement oui, mais nous pouvons vous guider pour structurer vos textes et choisir vos visuels.</p>
+          <br>
+          <p><strong>Le site sera-t-il consultable sur mobile ?</strong><br>
+          Oui, tous nos sites sont pensés en responsive (mobile, tablette, ordinateur).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVIS -->
+    <section id="devis">
+      <div>
+        <h2 class="section-title">Devis</h2>
+        <p class="section-subtitle">
+          Décrivez-nous votre projet et nous revenons vers vous avec une estimation personnalisée.
+        </p>
+
+        <form class="devis-box" onsubmit="event.preventDefault(); alert('Demande de devis envoyée (démo) 😊');">
+          <label for="name">Nom / Prénom</label>
+          <input id="name" type="text" placeholder="Votre nom complet" required>
+
+          <label for="project">Type de projet</label>
+          <input id="project" type="text" placeholder="Ex : site restaurant, boutique, agence..." required>
+
+          <label for="budget">Budget estimé</label>
+          <input id="budget" type="text" placeholder="Ex : entre 500€ et 1000€">
+
+          <label for="message">Détail du projet</label>
+          <textarea id="message" placeholder="Parlez-nous de vos besoins, pages souhaitées, délais..." required></textarea>
+
+          <button type="submit" class="contact-submit">Envoyer ma demande</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Imane Benazzouz & Yousra Hachmi — Tous droits réservés.
+  </footer>
+
+  <!-- Remonter en haut à chaque rechargement -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 10);
+    });
+  </script>
+</body>
+</html>
