@@ -49,9 +49,10 @@
 
     .hero-title {
       font-family: "Anton", system-ui, sans-serif;
-      font-size: clamp(4rem, 24vw, 13rem);
+      font-size: clamp(3.2rem, 14vw, 7rem);
       letter-spacing: 0.14em;
       margin-bottom: 1.2rem;
+      text-transform: uppercase;
     }
 
     .hero-subtitle {
@@ -151,6 +152,38 @@
       max-width: 700px;
     }
 
+    /* --- HOVER SPÉCIAL PREMIÈRE SECTION (#apropos) --- */
+
+    #apropos {
+      transition: background-color 0.4s ease, transform 0.4s ease;
+    }
+
+    #apropos:hover {
+      background-color: #0a0a0a; /* un peu plus clair */
+      transform: scale(1.01);   /* très léger zoom */
+    }
+
+    /* Trait animé sous le titre de la section À propos */
+    #apropos .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    #apropos .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 2px;
+      width: 0%;
+      background: var(--text-beige);
+      transition: width 0.4s ease;
+    }
+
+    #apropos:hover .section-title::after {
+      width: 100%;
+    }
+
     /* --- DEVIS / FORM --- */
 
     .devis-box {
@@ -236,15 +269,35 @@
     /* --- RESPONSIVE --- */
 
     @media (max-width: 600px) {
+      .hero {
+        padding-top: 4rem;
+      }
+
+      .hero-title {
+        font-size: 2.6rem;      /* plus petit sur mobile */
+        letter-spacing: 0.08em; /* moins d'espacement pour éviter de sortir de l'écran */
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+      }
+
       .hero-buttons {
         gap: 1.2rem;
       }
+
       .hero-row {
         gap: 1rem;
       }
+
       .hero-btn {
         width: 100%;
         text-align: center;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+        letter-spacing: 0.12em;
       }
     }
   </style>
