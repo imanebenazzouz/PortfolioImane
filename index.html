@@ -37,81 +37,73 @@
     }
 
     /* --- SPLASH / LOGO --- */
-/* --- SPLASH / LOGO --- */
 
-.splash {
-  position: fixed;
-  inset: 0;
-  background: var(--bg-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 1000;
-  animation: splashIn 0.8s ease-out forwards;
-}
+    .splash {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+      animation: splashIn 0.8s ease-out forwards;
+    }
 
-/* ton réglage de taille, tu peux le garder comme ça */
-.splash-logo {
-  max-width: 750px;
-  width: min(80vw, 750px);
-}
+    .splash-logo {
+      max-width: 750px;
+      width: min(80vw, 750px);
+    }
 
-/* petit texte sous le logo */
-.splash-text {
-  margin-top: 1.2rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
+    .splash-text {
+      margin-top: 1.2rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
 
-/* Quand tout est chargé, on lance l'anim de sortie */
-body.loaded .splash {
-  animation: splashOut 0.9s ease-in forwards;
-  pointer-events: none;
-}
+    body.loaded .splash {
+      animation: splashOut 0.9s ease-in forwards;
+      pointer-events: none;
+    }
 
-/* Apparition douce du splash */
-@keyframes splashIn {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+    @keyframes splashIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-/* Disparition avec léger zoom + fade */
-@keyframes splashOut {
-  to {
-    opacity: 0;
-    transform: scale(1.05);
-  }
-}
-
+    @keyframes splashOut {
+      to {
+        opacity: 0;
+        transform: scale(1.05);
+      }
+    }
 
     /* --- HERO (ACCUEIL) --- */
 
     .hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 3rem 1.5rem;
-  transform: translateY(20px);
-  opacity: 0;
-  transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
-}
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
+    }
 
-/* Quand le body a .loaded, le contenu arrive en fondu */
-body.loaded .hero {
-  transform: translateY(0);
-  opacity: 1;
-}
+    body.loaded .hero {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
     .hero-title {
       font-family: "Anton", system-ui, sans-serif;
@@ -248,6 +240,8 @@ body.loaded .hero {
     #apropos .section-title {
       position: relative;
       display: inline-block;
+    }
+
     .realisations-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
@@ -484,6 +478,7 @@ body.loaded .hero {
 
   <!-- SPLASH / LOGO -->
   <div class="splash">
+    <!-- Vérifie que le fichier est bien dans le même dossier que index.html -->
     <img src="logoIYdigitalstudio.png" alt="I&Y Digital Studio" class="splash-logo">
   </div>
 
@@ -713,31 +708,24 @@ body.loaded .hero {
     © 2025 Imane Benazzouz & Yousra Hachmi — Tous droits réservés.
   </footer>
 
-  <!-- JS : remonter en haut + animation splash -->
   <!-- Bouton retour en haut -->
   <button class="scroll-top" type="button" aria-label="Revenir en haut de la page">
     ↑
   </button>
 
-  <!-- Remonter en haut à chaque rechargement -->
+  <!-- JS : remonter en haut + animation splash + bouton haut -->
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-
-  // Le logo reste bien visible, puis on lance la transition
-  setTimeout(() => {
-    document.body.classList.add('loaded');
-  }, 1600); // augmente si tu veux que le logo reste plus longtemps
-});
-
+    // Au chargement : remonter en haut + lancer l'animation du logo
     window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
+
       setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 10);
+        document.body.classList.add('loaded');
+      }, 1600); // augmente si tu veux garder le logo plus longtemps
     });
 
     // Bouton retour haut : affichage + scroll fluide
