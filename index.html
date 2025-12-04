@@ -12,7 +12,7 @@
 
   <style>
     :root {
-      --bg-dark: #050505;
+      --bg-dark: #000000;
       --text-beige: #f7e8cb;
       --transition-fast: 0.25s ease;
     }
@@ -33,19 +33,85 @@
       color: var(--text-beige);
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
+      overflow-x: hidden;
     }
+
+    /* --- SPLASH / LOGO --- */
+/* --- SPLASH / LOGO --- */
+
+.splash {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1000;
+  animation: splashIn 0.8s ease-out forwards;
+}
+
+/* ton réglage de taille, tu peux le garder comme ça */
+.splash-logo {
+  max-width: 750px;
+  width: min(80vw, 750px);
+}
+
+/* petit texte sous le logo */
+.splash-text {
+  margin-top: 1.2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* Quand tout est chargé, on lance l'anim de sortie */
+body.loaded .splash {
+  animation: splashOut 0.9s ease-in forwards;
+  pointer-events: none;
+}
+
+/* Apparition douce du splash */
+@keyframes splashIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Disparition avec léger zoom + fade */
+@keyframes splashOut {
+  to {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
 
     /* --- HERO (ACCUEIL) --- */
 
     .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 3rem 1.5rem;
-    }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
+}
+
+/* Quand le body a .loaded, le contenu arrive en fondu */
+body.loaded .hero {
+  transform: translateY(0);
+  opacity: 1;
+}
 
     .hero-title {
       font-family: "Anton", system-ui, sans-serif;
@@ -163,7 +229,6 @@
       transform: scale(1.01);   /* très léger zoom */
     }
 
-    /* Trait animé sous le titre de la section À propos */
     #apropos .section-title {
       position: relative;
       display: inline-block;
@@ -274,8 +339,8 @@
       }
 
       .hero-title {
-        font-size: 2.6rem;      /* plus petit sur mobile */
-        letter-spacing: 0.08em; /* moins d'espacement pour éviter de sortir de l'écran */
+        font-size: 2.6rem;
+        letter-spacing: 0.08em;
       }
 
       .hero-subtitle {
@@ -303,6 +368,11 @@
   </style>
 </head>
 <body>
+
+  <!-- SPLASH / LOGO -->
+  <div class="splash">
+    <img src="logoIYdigitalstudio.png" alt="I&Y Digital Studio" class="splash-logo">
+  </div>
 
   <!-- HERO / ACCUEIL -->
   <div id="top" class="hero">
@@ -445,17 +515,21 @@
     © 2025 Imane Benazzouz & Yousra Hachmi — Tous droits réservés.
   </footer>
 
-  <!-- Remonter en haut à chaque rechargement -->
+  <!-- JS : remonter en haut + animation splash -->
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 10);
-    });
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+
+  // Le logo reste bien visible, puis on lance la transition
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 1600); // augmente si tu veux que le logo reste plus longtemps
+});
+
   </script>
 </body>
 </html>
