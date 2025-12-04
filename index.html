@@ -152,6 +152,59 @@
       max-width: 700px;
     }
 
+    /* --- RÉALISATIONS : CARTES CLIQUABLES --- */
+
+    .realisations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .realisations-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 1.2rem 1.2rem 1.3rem;
+      border-radius: 14px;
+      border: 1px solid rgba(247, 232, 203, 0.16);
+      background: #070707;
+      text-decoration: none;
+      color: var(--text-beige);
+      cursor: pointer;
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background-color var(--transition-fast);
+    }
+
+    .realisations-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      border-color: rgba(247, 232, 203, 0.35);
+      background: #0b0b0b;
+    }
+
+    .realisations-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(247, 232, 203, 0.7);
+      margin-bottom: 0.25rem;
+    }
+
+    .realisations-title {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .realisations-desc {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: rgba(247, 232, 203, 0.85);
+    }
+
     /* --- MÉTHODE : ÉTAPES NUMÉROTÉES --- */
 
     .step-list {
@@ -420,15 +473,73 @@
       <div>
         <h2 class="section-title">Nos réalisations</h2>
         <p class="section-subtitle">
-          Quelques exemples de projets que nous avons réalisés.
+          Quelques exemples de projets que nous avons réalisés. Cliquez sur un
+          carré pour ouvrir le site dans un nouvel onglet.
         </p>
+        <div class="realisations-grid">
+          <a
+            class="realisations-card"
+            href="https://yousrawsites.github.io/Resto-Indien-Namaste-Paris/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Restaurant</div>
+              <div class="realisations-title"><strong>Namaste Paris</strong></div>
+              <p class="realisations-desc">
+                Site vitrine pour un restaurant indien : présentation du menu,
+                ambiance chaleureuse et mise en avant des avis clients.
+              </p>
+            </div>
+          </a>
 
-        <div class="section-content">
-          <p><strong>Namaste Paris</strong> – Site vitrine pour un restaurant indien, avec présentation des menus, ambiance chaleureuse et mise en avant des avis.</p>
-          <br>
-          <p><strong>Maison Bianca</strong> – Site dédié aux robes de mariée, mettant en avant les collections et l’univers de la marque.</p>
-          <br>
-          <p><strong>Autres projets</strong> – Pages d’agences, photobooth, portfolios, et interfaces sur mesure selon les besoins des clients.</p>
+          <a
+            class="realisations-card"
+            href="https://imanebenazzouz.github.io/MaisonBianca/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Mariage</div>
+              <div class="realisations-title"><strong>Maison Bianca</strong></div>
+              <p class="realisations-desc">
+                Site dédié aux robes de mariée, collections mises en avant et
+                parcours simple pour prendre rendez-vous.
+              </p>
+            </div>
+          </a>
+
+          <a
+            class="realisations-card"
+            href="https://exemple.com/autres-projets"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Sur-mesure</div>
+              <div class="realisations-title"><strong>Autres projets</strong></div>
+              <p class="realisations-desc">
+                Pages d’agences, photobooth, portfolios et sites sur mesure
+                réalisés pour différents clients.
+              </p>
+            </div>
+          </a>
+
+          <a
+            class="realisations-card"
+            href="https://yousrawsites.github.io/Site-Plomberie-Asni-res/#contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Plomberie</div>
+              <div class="realisations-title"><strong>Plomberie Asnières</strong></div>
+              <p class="realisations-desc">
+                Site vitrine pour un plombier à Asnières : présentation des services,
+                témoignages clients et formulaire de contact pour demander un devis.
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
