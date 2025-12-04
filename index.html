@@ -218,35 +218,96 @@ body.loaded .hero {
       max-width: 700px;
     }
 
-    /* --- HOVER SPÉCIAL PREMIÈRE SECTION (#apropos) --- */
+    /* --- RÉALISATIONS : CARTES CLIQUABLES --- */
 
-    #apropos {
-      transition: background-color 0.4s ease, transform 0.4s ease;
+    .realisations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
 
-    #apropos:hover {
-      background-color: #0a0a0a; /* un peu plus clair */
-      transform: scale(1.01);   /* très léger zoom */
+    .realisations-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 1.2rem 1.2rem 1.3rem;
+      border-radius: 14px;
+      border: 1px solid rgba(247, 232, 203, 0.16);
+      background: #070707;
+      text-decoration: none;
+      color: var(--text-beige);
+      cursor: pointer;
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background-color var(--transition-fast);
     }
 
     #apropos .section-title {
       position: relative;
       display: inline-block;
+    .realisations-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      border-color: rgba(247, 232, 203, 0.35);
+      background: #0b0b0b;
     }
 
-    #apropos .section-title::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      height: 2px;
-      width: 0%;
-      background: var(--text-beige);
-      transition: width 0.4s ease;
+    .realisations-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(247, 232, 203, 0.7);
+      margin-bottom: 0.25rem;
     }
 
-    #apropos:hover .section-title::after {
-      width: 100%;
+    .realisations-title {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .realisations-desc {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: rgba(247, 232, 203, 0.85);
+    }
+
+    /* --- MÉTHODE : ÉTAPES NUMÉROTÉES --- */
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 700px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(247, 232, 203, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .step-body {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(247, 232, 203, 0.9);
     }
 
     /* --- DEVIS / FORM --- */
@@ -329,6 +390,58 @@ body.loaded .hero {
       color: rgba(247, 232, 203, 0.6);
       border-top: 1px solid rgba(247, 232, 203, 0.12);
       background: #050505;
+    }
+
+    /* --- BOUTON RETOUR HAUT --- */
+
+    .scroll-top {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.6rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(247, 232, 203, 0.4);
+      background: rgba(5, 5, 5, 0.92);
+      color: var(--text-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast),
+                  background-color var(--transition-fast), box-shadow var(--transition-fast);
+      font-size: 1.2rem;
+    }
+
+    .scroll-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      animation: scrollTopPulse 1.6s infinite;
+    }
+
+    .scroll-top:hover {
+      background: var(--text-beige);
+      color: var(--bg-dark);
+      box-shadow: 0 0 0 4px rgba(247, 232, 203, 0.25);
+    }
+
+    @keyframes scrollTopPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(247, 232, 203, 0.55);
+        transform: translateY(0) scale(1);
+      }
+      60% {
+        box-shadow: 0 0 0 14px rgba(247, 232, 203, 0);
+        transform: translateY(-3px) scale(1.06);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(247, 232, 203, 0);
+        transform: translateY(0) scale(1);
+      }
     }
 
     /* --- RESPONSIVE --- */
@@ -434,15 +547,73 @@ body.loaded .hero {
       <div>
         <h2 class="section-title">Nos réalisations</h2>
         <p class="section-subtitle">
-          Quelques exemples de projets que nous avons réalisés.
+          Quelques exemples de projets que nous avons réalisés. Cliquez sur un
+          carré pour ouvrir le site dans un nouvel onglet.
         </p>
+        <div class="realisations-grid">
+          <a
+            class="realisations-card"
+            href="https://yousrawsites.github.io/Resto-Indien-Namaste-Paris/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Restaurant</div>
+              <div class="realisations-title"><strong>Namaste Paris</strong></div>
+              <p class="realisations-desc">
+                Site vitrine pour un restaurant indien : présentation du menu,
+                ambiance chaleureuse et mise en avant des avis clients.
+              </p>
+            </div>
+          </a>
 
-        <div class="section-content">
-          <p><strong>Namaste Paris</strong> – Site vitrine pour un restaurant indien, avec présentation des menus, ambiance chaleureuse et mise en avant des avis.</p>
-          <br>
-          <p><strong>Maison Bianca</strong> – Site dédié aux robes de mariée, mettant en avant les collections et l’univers de la marque.</p>
-          <br>
-          <p><strong>Autres projets</strong> – Pages d’agences, photobooth, portfolios, et interfaces sur mesure selon les besoins des clients.</p>
+          <a
+            class="realisations-card"
+            href="https://imanebenazzouz.github.io/MaisonBianca/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Mariage</div>
+              <div class="realisations-title"><strong>Maison Bianca</strong></div>
+              <p class="realisations-desc">
+                Site dédié aux robes de mariée, collections mises en avant et
+                parcours simple pour prendre rendez-vous.
+              </p>
+            </div>
+          </a>
+
+          <a
+            class="realisations-card"
+            href="https://exemple.com/autres-projets"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Sur-mesure</div>
+              <div class="realisations-title"><strong>Autres projets</strong></div>
+              <p class="realisations-desc">
+                Pages d’agences, photobooth, portfolios et sites sur mesure
+                réalisés pour différents clients.
+              </p>
+            </div>
+          </a>
+
+          <a
+            class="realisations-card"
+            href="https://yousrawsites.github.io/Site-Plomberie-Asni-res/#contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-tag">Plomberie</div>
+              <div class="realisations-title"><strong>Plomberie Asnières</strong></div>
+              <p class="realisations-desc">
+                Site vitrine pour un plombier à Asnières : présentation des services,
+                témoignages clients et formulaire de contact pour demander un devis.
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -454,12 +625,36 @@ body.loaded .hero {
         <p class="section-subtitle">
           Une façon de travailler simple, structurée et rassurante pour vous.
         </p>
-        <p class="section-content">
-          1. <strong>Échange</strong> — Vous nous expliquez votre activité, vos objectifs et vos inspirations (sites que vous aimez, ambiance, couleurs).<br><br>
-          2. <strong>Proposition</strong> — Nous vous proposons une structure de pages et une idée de design global.<br><br>
-          3. <strong>Maquette & développement</strong> — Nous construisons votre site, section par section, en vous montrant l’avancement.<br><br>
-          4. <strong>Tests & mise en ligne</strong> — Nous vérifions l’affichage sur mobile, tablette et ordinateur, puis nous mettons votre site en ligne.
-        </p>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <p class="step-body">
+              <strong>Échange</strong> — Vous nous expliquez votre activité, vos objectifs
+              et vos inspirations (sites que vous aimez, ambiance, couleurs).
+            </p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <p class="step-body">
+              <strong>Proposition</strong> — Nous vous proposons une structure de pages
+              et une idée de design global.
+            </p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <p class="step-body">
+              <strong>Maquette & développement</strong> — Nous construisons votre site,
+              section par section, en vous montrant l’avancement.
+            </p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <p class="step-body">
+              <strong>Tests & mise en ligne</strong> — Nous vérifions l’affichage sur
+              mobile, tablette et ordinateur, puis nous mettons votre site en ligne.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -498,6 +693,9 @@ body.loaded .hero {
           <label for="project">Type de projet</label>
           <input id="project" type="text" placeholder="Ex : site restaurant, boutique, agence..." required>
 
+          <label for="phone">Numéro de téléphone</label>
+          <input id="phone" type="tel" placeholder="Ex : 06 12 34 56 78" required>
+
           <label for="budget">Budget estimé</label>
           <input id="budget" type="text" placeholder="Ex : entre 500€ et 1000€">
 
@@ -516,6 +714,12 @@ body.loaded .hero {
   </footer>
 
   <!-- JS : remonter en haut + animation splash -->
+  <!-- Bouton retour en haut -->
+  <button class="scroll-top" type="button" aria-label="Revenir en haut de la page">
+    ↑
+  </button>
+
+  <!-- Remonter en haut à chaque rechargement -->
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
@@ -530,6 +734,27 @@ window.addEventListener('load', () => {
   }, 1600); // augmente si tu veux que le logo reste plus longtemps
 });
 
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 10);
+    });
+
+    // Bouton retour haut : affichage + scroll fluide
+    const scrollTopButton = document.querySelector('.scroll-top');
+
+    window.addEventListener('scroll', () => {
+      if (!scrollTopButton) return;
+      if (window.scrollY > 320) {
+        scrollTopButton.classList.add('is-visible');
+      } else {
+        scrollTopButton.classList.remove('is-visible');
+      }
+    });
+
+    scrollTopButton?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
