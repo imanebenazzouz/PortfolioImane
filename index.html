@@ -51,8 +51,8 @@
     }
 
     .splash-logo {
-      max-width: 750px;
-      width: min(80vw, 750px);
+      max-width: 900px;
+      width: min(90vw, 900px);
     }
 
     .splash-text {
@@ -139,12 +139,12 @@
 
     .hero-btn {
       display: inline-block;
-      padding: 0.85rem 2.7rem;
+      padding: 0.95rem 3rem;
       border-radius: 999px;
       border: 2px solid var(--text-beige);
       background: transparent;
       color: var(--text-beige);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       text-decoration: none;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -181,6 +181,14 @@
       flex-direction: column;
       justify-content: center;
       border-top: 1px solid rgba(247, 232, 203, 0.12);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     section:first-of-type {
@@ -196,36 +204,60 @@
     }
 
     .section-subtitle {
-      max-width: 520px;
-      font-size: 0.98rem;
-      line-height: 1.6;
+      max-width: 620px;
+      font-size: 1rem;
+      line-height: 1.7;
       color: rgba(247, 232, 203, 0.82);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
     .section-content {
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: 0.98rem;
+      line-height: 1.8;
       color: rgba(247, 232, 203, 0.9);
-      max-width: 700px;
+      max-width: 720px;
     }
 
     /* --- RÉALISATIONS : CARTES CLIQUABLES --- */
+    .realisations-thumb {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+  background: #111;
+  aspect-ratio: 16 / 9; /* garde un beau format paysage, responsive */
+}
+
+.realisations-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  opacity: 0.92;
+}
+
+/* Effet zoom léger au survol de la carte */
+.realisations-card:hover .realisations-thumb img {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
 
     .realisations-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.4rem;
     }
 
     .realisations-card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 0.75rem;
-      padding: 1.2rem 1.2rem 1.3rem;
-      border-radius: 14px;
+      gap: 0.9rem;
+      padding: 1.6rem 1.6rem 1.9rem;
+      border-radius: 18px;
       border: 1px solid rgba(247, 232, 203, 0.16);
       background: #070707;
       text-decoration: none;
@@ -235,6 +267,7 @@
                   box-shadow var(--transition-fast),
                   border-color var(--transition-fast),
                   background-color var(--transition-fast);
+      min-height: 190px;
     }
 
     #apropos .section-title {
@@ -250,22 +283,127 @@
     }
 
     .realisations-tag {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(247, 232, 203, 0.7);
-      margin-bottom: 0.25rem;
-    }
-
-    .realisations-title {
-      font-size: 1rem;
       margin-bottom: 0.3rem;
     }
 
+    .realisations-title {
+      font-size: 1.08rem;
+      margin-bottom: 0.35rem;
+    }
+
     .realisations-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(247, 232, 203, 0.88);
+    }
+
+    /* --- COMPÉTENCES : VERSION CLIENT --- */
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2.4rem;
+      align-items: flex-start;
+      max-width: 900px;
+    }
+
+    .skills-block {
+      background: #070707;
+      border-radius: 18px;
+      border: 1px solid rgba(247, 232, 203, 0.18);
+      padding: 1.6rem 1.7rem 1.9rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .skills-block-title {
+      font-size: 0.86rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(247, 232, 203, 0.68);
+      margin-bottom: 0.9rem;
+    }
+
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: rgba(247, 232, 203, 0.92);
+    }
+
+    .skills-list li span {
+      font-weight: 500;
+    }
+
+    /* --- SECTION POURQUOI NOUS CHOISIR : VERSION PREMIUM --- */
+
+    .why-wrapper {
+      background: radial-gradient(circle at top left, #1a1a1a, #050505);
+      border-radius: 28px;
+      border: 1px solid rgba(247, 232, 203, 0.22);
+      padding: 2.2rem 2.1rem 2.5rem;
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.8);
+      max-width: 960px;
+    }
+
+    .why-header {
+      margin-bottom: 1.8rem;
+    }
+
+    .why-kicker {
+      font-size: 0.86rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(247, 232, 203, 0.7);
+      margin-bottom: 0.4rem;
+    }
+
+    .why-title-inline {
+      font-size: 1.35rem;
+      font-weight: 500;
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    .why-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.4rem 1.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .why-point {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .why-dot {
+      position: absolute;
+      left: 0;
+      top: 0.3rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(247, 232, 203, 0.9);
+    }
+
+    .why-point-title {
       font-size: 0.9rem;
-      line-height: 1.5;
-      color: rgba(247, 232, 203, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.25rem;
+    }
+
+    .why-point-text {
+      font-size: 0.93rem;
+      color: rgba(247, 232, 203, 0.9);
+      line-height: 1.7;
     }
 
     /* --- MÉTHODE : ÉTAPES NUMÉROTÉES --- */
@@ -273,25 +411,41 @@
     .step-list {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      max-width: 700px;
+      gap: 1.3rem;
+      max-width: 720px;
+      margin-top: 0.5rem;
     }
 
     .step-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.9rem;
+      gap: 1.1rem;
+      padding: 1.2rem 1.3rem 1.3rem;
+      border-radius: 16px;
+      background: rgba(7, 7, 7, 0.9);
+      border: 1px solid rgba(247, 232, 203, 0.12);
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background-color var(--transition-fast);
+    }
+
+    .step-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.7);
+      border-color: rgba(247, 232, 203, 0.4);
+      background: #0b0b0b;
     }
 
     .step-number {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: 1px solid rgba(247, 232, 203, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-top: 0.2rem;
@@ -299,25 +453,106 @@
     }
 
     .step-body {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: rgba(247, 232, 203, 0.9);
+    }
+
+    .step-title {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.86rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .step-text {
+      margin-bottom: 0.25rem;
+    }
+
+    .step-highlight {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      color: rgba(247, 232, 203, 0.82);
+    }
+
+    /* --- DEVIS / TARIFS --- */
+
+    .pricing-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      max-width: 900px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 1.8rem;
+    }
+
+    .pricing-card {
+      background: #080808;
+      border-radius: 20px;
+      border: 1px solid rgba(247, 232, 203, 0.22);
+      padding: 1.8rem 1.7rem 2rem;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.75);
+    }
+
+    .pricing-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(247, 232, 203, 0.7);
+      margin-bottom: 0.4rem;
+    }
+
+    .pricing-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .pricing-price {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .pricing-details {
       font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(247, 232, 203, 0.9);
+      margin-bottom: 0.8rem;
+    }
+
+    .pricing-list {
+      list-style: none;
+      font-size: 0.92rem;
       line-height: 1.7;
       color: rgba(247, 232, 203, 0.9);
     }
 
-    /* --- DEVIS / FORM --- */
+    .pricing-list li::before {
+      content: "• ";
+      opacity: 0.85;
+    }
+
+    /* Devis form (à droite) */
 
     .devis-box {
       background: #0a0a0a;
-      border-radius: 18px;
+      border-radius: 20px;
       border: 1px solid rgba(247, 232, 203, 0.12);
-      padding: 1.8rem 1.6rem 2rem;
-      max-width: 620px;
+      padding: 2.1rem 1.9rem 2.4rem;
+      max-width: 680px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65);
     }
 
     .devis-box label {
       display: block;
-      font-size: 0.85rem;
-      margin-bottom: 0.35rem;
+      font-size: 0.86rem;
+      margin-bottom: 0.4rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -325,14 +560,14 @@
     .devis-box input,
     .devis-box textarea {
       width: 100%;
-      padding: 0.7rem 0.8rem;
-      border-radius: 10px;
+      padding: 0.8rem 0.9rem;
+      border-radius: 12px;
       border: 1px solid rgba(247, 232, 203, 0.25);
       background: #050505;
       color: var(--text-beige);
       font-family: inherit;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      font-size: 0.92rem;
+      margin-bottom: 1.1rem;
       outline: none;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
@@ -344,7 +579,7 @@
     }
 
     .devis-box textarea {
-      min-height: 120px;
+      min-height: 140px;
       resize: vertical;
     }
 
@@ -352,11 +587,11 @@
       display: inline-block;
       border: none;
       cursor: pointer;
-      padding: 0.8rem 2.4rem;
+      padding: 0.9rem 2.6rem;
       border-radius: 999px;
       background: var(--text-beige);
       color: var(--bg-dark);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       transition: background-color var(--transition-fast),
@@ -373,6 +608,72 @@
     .contact-submit:active {
       transform: translateY(0);
       box-shadow: none;
+    }
+
+    /* --- FAQ ACCORDÉON --- */
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      max-width: 760px;
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      border: 1px solid rgba(247, 232, 203, 0.18);
+      background: #070707;
+      overflow: hidden;
+      transition: border-color var(--transition-fast),
+                  background-color var(--transition-fast),
+                  box-shadow var(--transition-fast);
+    }
+
+    .faq-item.is-open {
+      border-color: rgba(247, 232, 203, 0.5);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+      background: #0b0b0b;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 0.95rem 1.1rem 0.95rem 1.1rem;
+      font-size: 0.98rem;
+      color: var(--text-beige);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .faq-question-text {
+      font-weight: 500;
+    }
+
+    .faq-icon {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      transition: transform var(--transition-fast);
+    }
+
+    .faq-item.is-open .faq-icon {
+      transform: rotate(90deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.1rem 0.9rem 1.1rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(247, 232, 203, 0.9);
     }
 
     /* --- FOOTER --- */
@@ -425,7 +726,7 @@
 
     @keyframes scrollTopPulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(247, 232, 203, 0.55);
+        box-shadow: 0 0 0 0 rgba(71, 69, 63, 0.55);
         transform: translateY(0) scale(1);
       }
       60% {
@@ -439,6 +740,26 @@
     }
 
     /* --- RESPONSIVE --- */
+
+    @media (max-width: 900px) {
+      .skills-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-points {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .why-points {
+        grid-template-columns: 1fr;
+      }
+    }
 
     @media (max-width: 600px) {
       .hero {
@@ -471,6 +792,10 @@
         font-size: 1.7rem;
         letter-spacing: 0.12em;
       }
+
+      .realisations-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -478,7 +803,6 @@
 
   <!-- SPLASH / LOGO -->
   <div class="splash">
-    <!-- Vérifie que le fichier est bien dans le même dossier que index.html -->
     <img src="logoIYdigitalstudio.svg" alt="I&Y Digital Studio" class="splash-logo">
   </div>
 
@@ -495,10 +819,11 @@
       </div>
       <div class="hero-row">
         <a href="#methode" class="hero-btn">Notre méthode</a>
+        <a href="#choisir" class="hero-btn">Pourquoi nous ?</a>
         <a href="#faq" class="hero-btn">FAQ</a>
       </div>
       <div class="hero-row hero-row-single">
-        <a href="#devis" class="hero-btn">Devis</a>
+        <a href="#devis" class="hero-btn">Devis & tarifs</a>
       </div>
     </div>
   </div>
@@ -520,20 +845,70 @@
       </div>
     </section>
 
-    <!-- COMPÉTENCES -->
+    <!-- COMPÉTENCES (VERSION CLIENT) -->
     <section id="competences">
       <div>
         <h2 class="section-title">Nos compétences</h2>
         <p class="section-subtitle">
-          Une complémentarité technique et créative pour accompagner vos projets de A à Z.
+          Concrètement, notre rôle est de transformer vos idées en un site clair, rassurant
+          et efficace pour vos futurs clients.
         </p>
-        <p class="section-content">
-          • Conception de sites vitrine modernes (HTML, CSS, JavaScript, React)<br>
-          • Intégration responsive (mobile, tablette, desktop)<br>
-          • Expérience utilisateur (UX) claire et rassurante<br>
-          • Contenus structurés : menu, offres, formulaires, FAQ, avis clients<br>
-          • Déploiement et mise en ligne (GitHub Pages, hébergeurs classiques)
-        </p>
+
+        <div class="skills-layout">
+          <!-- Bloc 1 : ce qu’on fait pour le client -->
+          <div class="skills-block">
+            <div class="skills-block-title">Ce que nous mettons en place pour vous</div>
+            <ul class="skills-list">
+              <li>
+                <span>Une page d’accueil qui donne envie</span> — vos services, vos points forts
+                et vos preuves de confiance mis en avant dès les premières secondes.
+              </li>
+              <li>
+                <span>Une navigation simple</span> — un menu clair, des boutons bien visibles
+                (appeler, réserver, demander un devis…) et un parcours logique pour vos visiteurs.
+              </li>
+              <li>
+                <span>Un site lisible sur tous les écrans</span> — nous pensons le design
+                directement pour le mobile, la tablette et l’ordinateur.
+              </li>
+              <li>
+                <span>Des textes structurés</span> — nous vous guidons pour présenter votre activité,
+                vos offres, vos tarifs ou vos collections sans perdre le visiteur.
+              </li>
+              <li>
+                <span>Des formulaires qui fonctionnent</span> — prise de contact, demande de devis
+                ou rendez-vous : vos prospects savent comment vous joindre en un clic.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bloc 2 : pour qui on est la bonne équipe -->
+          <div class="skills-block">
+            <div class="skills-block-title">Pour qui sommes-nous la bonne équipe ?</div>
+            <ul class="skills-list">
+              <li>
+                <span>Commerçants et restaurateurs</span> — restaurant, salon de beauté,
+                pâtisserie, boutique… qui veulent une présence pro en ligne.
+              </li>
+              <li>
+                <span>Indépendants et prestataires de service</span> — photographe,
+                plombier, coach, artisan, agence… qui ont besoin d’inspirer confiance.
+              </li>
+              <li>
+                <span>Entreprises qui débutent sur le web</span> — vous n’avez pas encore de site
+                ou le vôtre est ancien et ne vous ressemble plus.
+              </li>
+              <li>
+                <span>Projets avec budget maîtrisé</span> — vous voulez un résultat propre,
+                sérieux et efficace, sans entrer dans le jargon technique.
+              </li>
+              <li>
+                <span>Personnes qui veulent être accompagnées</span> — nous expliquons chaque étape
+                simplement, sans vocabulaire compliqué.
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -546,69 +921,83 @@
           carré pour ouvrir le site dans un nouvel onglet.
         </p>
         <div class="realisations-grid">
-          <a
-            class="realisations-card"
-            href="https://yousrawsites.github.io/Resto-Indien-Namaste-Paris/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>
-              <div class="realisations-tag">Restaurant</div>
-              <div class="realisations-title"><strong>Namaste Paris</strong></div>
-              <p class="realisations-desc">
-                Site vitrine pour un restaurant indien : présentation du menu,
-                ambiance chaleureuse et mise en avant des avis clients.
-              </p>
-            </div>
-          </a>
+<a
+  class="realisations-card"
+  href="https://yousrawsites.github.io/Resto-Indien-Namaste-Paris/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div>
+    <div class="realisations-thumb">
+      <img src="namaste.png" alt="Aperçu du site Namaste Paris">
+    </div>
+    <div class="realisations-tag">Restaurant</div>
+    <div class="realisations-title"><strong>Namaste Paris</strong></div>
+    <p class="realisations-desc">
+      Site vitrine pour un restaurant indien : présentation du menu,
+      ambiance chaleureuse et mise en avant des avis clients.
+    </p>
+  </div>
+</a>
 
-          <a
-            class="realisations-card"
-            href="https://imanebenazzouz.github.io/MaisonBianca/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>
-              <div class="realisations-tag">Mariage</div>
-              <div class="realisations-title"><strong>Maison Bianca</strong></div>
-              <p class="realisations-desc">
-                Site dédié aux robes de mariée, collections mises en avant et
-                parcours simple pour prendre rendez-vous.
-              </p>
-            </div>
-          </a>
 
-          <a
-            class="realisations-card"
-            href="https://exemple.com/autres-projets"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>
-              <div class="realisations-tag">Sur-mesure</div>
-              <div class="realisations-title"><strong>Autres projets</strong></div>
-              <p class="realisations-desc">
-                Pages d’agences, photobooth, portfolios et sites sur mesure
-                réalisés pour différents clients.
-              </p>
-            </div>
-          </a>
+<a
+  class="realisations-card"
+  href="https://imanebenazzouz.github.io/MaisonBianca/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div>
+    <div class="realisations-thumb">
+      <img src="maisb.png" alt="Aperçu du site Maison Bianca">
+    </div>
+    <div class="realisations-tag">Mariage</div>
+    <div class="realisations-title"><strong>Maison Bianca</strong></div>
+    <p class="realisations-desc">
+      Site dédié aux robes de mariée, collections mises en avant et
+      parcours simple pour prendre rendez-vous.
+    </p>
+  </div>
+</a>
 
-          <a
-            class="realisations-card"
-            href="https://yousrawsites.github.io/Site-Plomberie-Asni-res/#contact"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>
-              <div class="realisations-tag">Plomberie</div>
-              <div class="realisations-title"><strong>Plomberie Asnières</strong></div>
-              <p class="realisations-desc">
-                Site vitrine pour un plombier à Asnières : présentation des services,
-                témoignages clients et formulaire de contact pour demander un devis.
-              </p>
-            </div>
-          </a>
+<a
+  class="realisations-card"
+  href="https://exemple.com/autres-projets"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div>
+    <div class="realisations-thumb">
+      <img src="captures/autres-projets.jpg" alt="Aperçu d'autres projets sur mesure">
+    </div>
+    <div class="realisations-tag">Sur-mesure</div>
+    <div class="realisations-title"><strong>Autres projets</strong></div>
+    <p class="realisations-desc">
+      Pages d’agences, photobooth, portfolios et sites sur mesure
+      réalisés pour différents clients.
+    </p>
+  </div>
+</a>
+
+<a
+  class="realisations-card"
+  href="https://yousrawsites.github.io/Site-Plomberie-Asni-res/#contact"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div>
+    <div class="realisations-thumb">
+      <img src="plomb.png" alt="Aperçu du site Plomberie Asnières">
+    </div>
+    <div class="realisations-tag">Plomberie</div>
+    <div class="realisations-title"><strong>Plomberie Asnières</strong></div>
+    <p class="realisations-desc">
+      Site vitrine pour un plombier à Asnières : présentation des services,
+      témoignages clients et formulaire de contact pour demander un devis.
+    </p>
+  </div>
+</a>
+
         </div>
       </div>
     </section>
@@ -618,87 +1007,256 @@
       <div>
         <h2 class="section-title">Notre méthode</h2>
         <p class="section-subtitle">
-          Une façon de travailler simple, structurée et rassurante pour vous.
+          Une façon de travailler simple, structurée et rassurante. Vous savez où on va à chaque étape,
+          et vous validez avant que l’on avance.
         </p>
         <div class="step-list">
           <div class="step-item">
             <div class="step-number">1</div>
-            <p class="step-body">
-              <strong>Échange</strong> — Vous nous expliquez votre activité, vos objectifs
-              et vos inspirations (sites que vous aimez, ambiance, couleurs).
-            </p>
+            <div class="step-body">
+              <div class="step-title">Échange & compréhension de votre activité</div>
+              <p class="step-text">
+                Nous discutons de votre métier, de vos objectifs (être contacté, réserver, vendre,
+                inspirer confiance…) et des sites que vous aimez. Vous pouvez tout nous dire, même si
+                ce n’est pas “technique”.
+              </p>
+              <p class="step-highlight">
+                Vous gagnez : une vision claire de ce que votre futur site va raconter sur vous.
+              </p>
+            </div>
           </div>
+
           <div class="step-item">
             <div class="step-number">2</div>
-            <p class="step-body">
-              <strong>Proposition</strong> — Nous vous proposons une structure de pages
-              et une idée de design global.
-            </p>
+            <div class="step-body">
+              <div class="step-title">Structure & proposition de pages</div>
+              <p class="step-text">
+                Nous vous proposons une structure simple et efficace : quelles pages, quelles sections,
+                quels boutons importants. L’idée est que vos futurs clients trouvent l’information en
+                quelques secondes.
+              </p>
+              <p class="step-highlight">
+                Vous gagnez : un plan de site validé ensemble avant de commencer le design.
+              </p>
+            </div>
           </div>
+
           <div class="step-item">
             <div class="step-number">3</div>
-            <p class="step-body">
-              <strong>Maquette & développement</strong> — Nous construisons votre site,
-              section par section, en vous montrant l’avancement.
-            </p>
+            <div class="step-body">
+              <div class="step-title">Maquette & développement</div>
+              <p class="step-text">
+                Nous construisons votre site section par section (accueil, services, collections,
+                contact, FAQ…), en vous montrant l’avancement. Vous pouvez demander des ajustements
+                au fur et à mesure.
+              </p>
+              <p class="step-highlight">
+                Vous gagnez : un site sur mesure, fidèle à votre image, validé étape par étape.
+              </p>
+            </div>
           </div>
+
           <div class="step-item">
             <div class="step-number">4</div>
-            <p class="step-body">
-              <strong>Tests & mise en ligne</strong> — Nous vérifions l’affichage sur
-              mobile, tablette et ordinateur, puis nous mettons votre site en ligne.
-            </p>
+            <div class="step-body">
+              <div class="step-title">Tests, mobile & mise en ligne</div>
+              <p class="step-text">
+                Nous testons l’affichage sur mobile, tablette et ordinateur, les formulaires, les liens
+                et le temps de chargement. Une fois que tout est bon, nous mettons le site en ligne
+                et nous vous expliquons les bases pour la suite.
+              </p>
+              <p class="step-highlight">
+                Vous gagnez : un site prêt à être partagé à vos clients, dès le premier jour.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- POURQUOI NOUS CHOISIR (VERSION PREMIUM) -->
+    <section id="choisir">
+      <div>
+        <h2 class="section-title">Pourquoi nous choisir&nbsp;?</h2>
+        <div class="why-wrapper">
+          <div class="why-header">
+            <div class="why-kicker">Votre site, sans complication</div>
+            <div class="why-title-inline">
+              Vous travaillez avec un duo impliqué, qui respecte votre budget
+              <br>et parle un langage compréhensible.
+            </div>
+          </div>
+
+          <div class="why-points">
+            <div class="why-point">
+              <span class="why-dot"></span>
+              <div class="why-point-title">Prix abordables & clairs</div>
+              <p class="why-point-text">
+                Nous adaptons le projet à votre budget (création d’activité, petite structure,
+                indépendant…). Vous savez ce qui est inclus, sans frais cachés.
+              </p>
+            </div>
+
+            <div class="why-point">
+              <span class="why-dot"></span>
+              <div class="why-point-title">Réactivité au quotidien</div>
+              <p class="why-point-text">
+                Nous répondons rapidement et avançons par petits retours. Vous savez où en est le site
+                et vous pouvez réagir à chaque étape.
+              </p>
+            </div>
+
+            <div class="why-point">
+              <span class="why-dot"></span>
+              <div class="why-point-title">Ajustements en cours de route</div>
+              <p class="why-point-text">
+                Vos idées évoluent en voyant le site ? C’est normal. Nous prévoyons des ajustements
+                pour que le résultat final vous ressemble vraiment.
+              </p>
+            </div>
+
+            <div class="why-point">
+              <span class="why-dot"></span>
+              <div class="why-point-title">Accompagnement & pédagogie</div>
+              <p class="why-point-text">
+                Vous n’êtes pas obligé·e d’aimer l’informatique. Notre rôle, c’est de traduire
+                vos besoins en quelque chose de simple pour vous, et clair pour vos clients, même après la mise en ligne.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (ACCORDÉON) -->
     <section id="faq">
       <div>
         <h2 class="section-title">FAQ</h2>
         <p class="section-subtitle">
-          Les questions que nos clients posent le plus souvent.
+          Les questions que nos clients posent le plus souvent, avec des réponses simples et honnêtes.
         </p>
-        <div class="section-content">
-          <p><strong>Combien de temps faut-il pour créer un site ?</strong><br>
-          En général, entre 1 et 3 semaines selon le nombre de pages et votre réactivité sur les retours.</p>
-          <br>
-          <p><strong>Faut-il déjà avoir tous les textes et photos ?</strong><br>
-          Idéalement oui, mais nous pouvons vous guider pour structurer vos textes et choisir vos visuels.</p>
-          <br>
-          <p><strong>Le site sera-t-il consultable sur mobile ?</strong><br>
-          Oui, tous nos sites sont pensés en responsive (mobile, tablette, ordinateur).</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span class="faq-question-text">Combien de temps faut-il pour créer un site&nbsp;?</span>
+              <span class="faq-icon">›</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                En général, entre 1 et 3 semaines. Tout dépend du nombre de pages, de la complexité du contenu
+                et de la rapidité de vos retours. Dès le début du projet, nous vous donnons un délai estimé
+                et nous vous prévenons si quelque chose peut l’allonger.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span class="faq-question-text">Quel budget faut-il prévoir&nbsp;?</span>
+              <span class="faq-icon">›</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Le prix dépend du nombre de pages, des fonctionnalités (formulaire, mise en avant de collections,
+                FAQ, galerie photos…) et du niveau de personnalisation. Dites-nous simplement votre budget approximatif
+                et nous vous proposons une solution adaptée, en toute transparence.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span class="faq-question-text">Faut-il déjà avoir tous les textes et toutes les photos&nbsp;?</span>
+              <span class="faq-icon">›</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Si vous avez déjà des textes et des visuels, c’est parfait. Sinon, aucun souci :
+                nous pouvons vous guider sur ce qu’il faut écrire, quelles rubriques prévoir,
+                et quel type de photos fonctionne le mieux pour votre activité.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span class="faq-question-text">Pourrai-je modifier mon site plus tard&nbsp;?</span>
+              <span class="faq-icon">›</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Oui. Selon la solution choisie, nous pouvons vous montrer comment modifier certains contenus simples
+                (horaires, textes, tarifs…), ou bien prévoir des petites interventions de notre part pour les mises à jour.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span class="faq-question-text">Est-ce que vous vous occupez aussi du nom de domaine et de l’hébergement&nbsp;?</span>
+              <span class="faq-icon">›</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Nous pouvons vous conseiller pour choisir un nom de domaine et un hébergeur adaptés à votre situation.
+                Si besoin, nous vous accompagnons pas à pas dans la configuration, pour que votre site soit accessible
+                sans que vous ayez à gérer la partie technique seul·e.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span class="faq-question-text">Comment se passent les échanges pendant le projet&nbsp;?</span>
+              <span class="faq-icon">›</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Nous fonctionnons avec des points réguliers (messages, mail ou visio) pour vous montrer l’avancement.
+                Vous validez les grandes étapes (structure, design, contenus) avant la mise en ligne.
+                L’objectif : que vous soyez à l’aise et en confiance du début à la fin.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- DEVIS -->
+    <!-- DEVIS & TARIFS -->
     <section id="devis">
       <div>
-        <h2 class="section-title">Devis</h2>
+        <h2 class="section-title">Devis & tarifs</h2>
         <p class="section-subtitle">
-          Décrivez-nous votre projet et nous revenons vers vous avec une estimation personnalisée.
+          Une première offre simple pour vous donner un ordre d’idée, et un formulaire
+          pour nous expliquer votre projet plus en détail.
         </p>
 
-        <form class="devis-box" onsubmit="event.preventDefault(); alert('Demande de devis envoyée (démo) 😊');">
-          <label for="name">Nom / Prénom</label>
-          <input id="name" type="text" placeholder="Votre nom complet" required>
+        <div class="pricing-layout">
+          <div class="pricing-grid">
+          
 
-          <label for="project">Type de projet</label>
-          <input id="project" type="text" placeholder="Ex : site restaurant, boutique, agence..." required>
+            <!-- Formulaire de devis -->
+            <form class="devis-box" onsubmit="event.preventDefault(); alert('Demande de devis envoyée (démo) 😊');">
+              <label for="name">Nom / Prénom</label>
+              <input id="name" type="text" placeholder="Votre nom complet" required>
 
-          <label for="phone">Numéro de téléphone</label>
-          <input id="phone" type="tel" placeholder="Ex : 06 12 34 56 78" required>
+              <label for="project">Type de projet</label>
+              <input id="project" type="text" placeholder="Ex : site restaurant, boutique, agence..." required>
 
-          <label for="budget">Budget estimé</label>
-          <input id="budget" type="text" placeholder="Ex : entre 500€ et 1000€">
+              <label for="phone">Numéro de téléphone</label>
+              <input id="phone" type="tel" placeholder="Ex : 06 12 34 56 78" required>
 
-          <label for="message">Détail du projet</label>
-          <textarea id="message" placeholder="Parlez-nous de vos besoins, pages souhaitées, délais..." required></textarea>
+              <label for="budget">Budget estimé</label>
+              <input id="budget" type="text" placeholder="€">
 
-          <button type="submit" class="contact-submit">Envoyer ma demande</button>
-        </form>
+              <label for="message">Détail du projet</label>
+              <textarea id="message" placeholder="Parlez-nous de vos besoins, pages souhaitées, délais..." required></textarea>
+
+              <button type="submit" class="contact-submit">Envoyer ma demande</button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -713,22 +1271,20 @@
     ↑
   </button>
 
-  <!-- JS : remonter en haut + animation splash + bouton haut -->
+  <!-- JS : splash, retour haut, animation sections, FAQ accordéon -->
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-    // Au chargement : remonter en haut + lancer l'animation du logo
     window.addEventListener('load', () => {
       window.scrollTo(0, 0);
 
       setTimeout(() => {
         document.body.classList.add('loaded');
-      }, 1600); // augmente si tu veux garder le logo plus longtemps
+      }, 1600);
     });
 
-    // Bouton retour haut : affichage + scroll fluide
     const scrollTopButton = document.querySelector('.scroll-top');
 
     window.addEventListener('scroll', () => {
@@ -742,6 +1298,60 @@
 
     scrollTopButton?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Animation des sections au scroll
+    const sections = document.querySelectorAll('main section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+      }
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    // FAQ accordéon
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item) => {
+      const questionBtn = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      questionBtn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+
+        // Optionnel : fermer les autres
+        faqItems.forEach((other) => {
+          if (other !== item) {
+            other.classList.remove('is-open');
+            const otherAnswer = other.querySelector('.faq-answer');
+            if (otherAnswer) {
+              otherAnswer.style.maxHeight = null;
+            }
+          }
+        });
+
+        if (!isOpen) {
+          item.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          item.classList.remove('is-open');
+          answer.style.maxHeight = null;
+        }
+      });
+    });
+
+    // Pour que les réponses soient bien calculées si la fenêtre change de taille
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.faq-item.is-open .faq-answer').forEach((answer) => {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      });
     });
   </script>
 </body>
