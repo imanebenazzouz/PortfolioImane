@@ -220,29 +220,28 @@
 
     /* --- RÉALISATIONS : CARTES CLIQUABLES --- */
     .realisations-thumb {
-  position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 0.9rem;
-  background: #111;
-  aspect-ratio: 16 / 9; /* garde un beau format paysage, responsive */
-}
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 0.9rem;
+      background: #111;
+      aspect-ratio: 16 / 9; /* garde un beau format paysage, responsive */
+    }
 
-.realisations-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.03);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
-  opacity: 0.92;
-}
+    .realisations-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+      opacity: 0.92;
+    }
 
-/* Effet zoom léger au survol de la carte */
-.realisations-card:hover .realisations-thumb img {
-  transform: scale(1.08);
-  opacity: 1;
-}
-
+    /* Effet zoom léger au survol de la carte */
+    .realisations-card:hover .realisations-thumb img {
+      transform: scale(1.08);
+      opacity: 1;
+    }
 
     .realisations-grid {
       display: grid;
@@ -301,40 +300,108 @@
       color: rgba(247, 232, 203, 0.88);
     }
 
-    /* --- COMPÉTENCES : VERSION CLIENT --- */
+    /* --- COMPÉTENCES : VERSION CLIENT (NOUVEAU DESIGN) --- */
+
+    #competences {
+      align-items: flex-start;
+    }
+
+    #competences > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
 
     .skills-layout {
+      width: 100%;
+      max-width: 980px;
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 2.4rem;
-      align-items: flex-start;
-      max-width: 900px;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 2.6rem;
+      align-items: stretch;
+      padding: 2.1rem 2rem 2.3rem;
+      border-radius: 26px;
+      border: 1px solid rgba(247, 232, 203, 0.24);
+      background:
+        radial-gradient(circle at top left, rgba(247, 232, 203, 0.08), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(247, 232, 203, 0.06), transparent 60%),
+        #050505;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.9);
     }
 
     .skills-block {
-      background: #070707;
-      border-radius: 18px;
+      position: relative;
+      padding: 1.7rem 1.7rem 1.9rem;
+      border-radius: 20px;
+      background: rgba(7, 7, 7, 0.88);
       border: 1px solid rgba(247, 232, 203, 0.18);
-      padding: 1.6rem 1.7rem 1.9rem;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .skills-block::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(247, 232, 203, 0.12), transparent 55%);
+      mix-blend-mode: soft-light;
+      opacity: 0.4;
     }
 
     .skills-block-title {
-      font-size: 0.86rem;
-      letter-spacing: 0.18em;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 232, 203, 0.4);
+      background: rgba(5, 5, 5, 0.9);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(247, 232, 203, 0.68);
-      margin-bottom: 0.9rem;
+      color: rgba(247, 232, 203, 0.8);
+      margin-bottom: 1.1rem;
+    }
+
+    .skills-block-title::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text-beige);
+      box-shadow: 0 0 0 6px rgba(247, 232, 203, 0.15);
     }
 
     .skills-list {
+      position: relative;
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.9rem;
       font-size: 0.96rem;
-      line-height: 1.6;
-      color: rgba(247, 232, 203, 0.92);
+      line-height: 1.7;
+      color: rgba(247, 232, 203, 0.9);
+      z-index: 1;
+    }
+
+    .skills-list li {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .skills-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(247, 232, 203, 0.85);
+      background: #050505;
     }
 
     .skills-list li span {
@@ -838,9 +905,7 @@
           Deux développeuses web qui conçoivent des sites élégants, rapides et orientés résultats.
         </p>
         <p class="section-content">
-          Nous sommes Imane Benazzouz et Yousra Hachmi, deux informaticiennes passionnées par le web
-          et l’UX. Nous créons des sites vitrine, des interfaces sur mesure et des expériences
-          digitales qui donnent une vraie image professionnelle à votre activité.
+          Nous sommes Imane Benazzouz et Yousra Hachmi, deux informaticiennes passionnées par le web et l’UX. Nous créons des sites vitrine, des petites boutiques en ligne (e‑commerce) et des interfaces sur mesure qui donnent une vraie image professionnelle à votre activité.
         </p>
       </div>
     </section>
@@ -850,61 +915,54 @@
       <div>
         <h2 class="section-title">Nos compétences</h2>
         <p class="section-subtitle">
-          Concrètement, notre rôle est de transformer vos idées en un site clair, rassurant
-          et efficace pour vos futurs clients.
+          Notre métier : transformer votre idée en un site vitrine ou une petite boutique en ligne
+          qui donne une vraie bonne impression, rassure vos clients et les aide à passer à l’action.
         </p>
 
         <div class="skills-layout">
-          <!-- Bloc 1 : ce qu’on fait pour le client -->
+          <!-- Bloc 1 : ce que nous faisons concrètement -->
           <div class="skills-block">
-            <div class="skills-block-title">Ce que nous mettons en place pour vous</div>
+            <div class="skills-block-title">Concrètement, ce que nous faisons pour vous</div>
             <ul class="skills-list">
               <li>
-                <span>Une page d’accueil qui donne envie</span> — vos services, vos points forts
-                et vos preuves de confiance mis en avant dès les premières secondes.
+                <span>Site vitrine ou e‑commerce efficace</span> — les pages essentielles
+                (accueil, présentation, services, réalisations, contact, boutique si besoin)
+                avec des boutons clairs pour appeler, réserver ou commander.
               </li>
               <li>
-                <span>Une navigation simple</span> — un menu clair, des boutons bien visibles
-                (appeler, réserver, demander un devis…) et un parcours logique pour vos visiteurs.
+                <span>Design sur mesure</span> — couleurs, typographies, visuels et mise en page
+                en accord avec votre activité (restaurant, boutique, artisan, agence, indépendant…).
               </li>
               <li>
-                <span>Un site lisible sur tous les écrans</span> — nous pensons le design
-                directement pour le mobile, la tablette et l’ordinateur.
+                <span>Site pensé pour le mobile</span> — navigation simple sur téléphone,
+                texte lisible, boutons faciles à cliquer et informations importantes toujours visibles.
               </li>
               <li>
-                <span>Des textes structurés</span> — nous vous guidons pour présenter votre activité,
-                vos offres, vos tarifs ou vos collections sans perdre le visiteur.
-              </li>
-              <li>
-                <span>Des formulaires qui fonctionnent</span> — prise de contact, demande de devis
-                ou rendez-vous : vos prospects savent comment vous joindre en un clic.
+                <span>Textes structurés et clairs</span> — nous vous aidons à organiser vos idées
+                (qui vous êtes, ce que vous proposez, pourquoi vous) pour que ce soit simple à lire.
               </li>
             </ul>
           </div>
 
-          <!-- Bloc 2 : pour qui on est la bonne équipe -->
+          <!-- Bloc 2 : ce que vous y gagnez -->
           <div class="skills-block">
-            <div class="skills-block-title">Pour qui sommes-nous la bonne équipe ?</div>
+            <div class="skills-block-title">Les bénéfices pour votre activité</div>
             <ul class="skills-list">
               <li>
-                <span>Commerçants et restaurateurs</span> — restaurant, salon de beauté,
-                pâtisserie, boutique… qui veulent une présence pro en ligne.
+                <span>Une image professionnelle et cohérente</span> — un site qui donne confiance,
+                qui reflète votre sérieux et votre manière de travailler.
               </li>
               <li>
-                <span>Indépendants et prestataires de service</span> — photographe,
-                plombier, coach, artisan, agence… qui ont besoin d’inspirer confiance.
+                <span>Plus de prises de contact</span> — téléphone, formulaire, réseaux sociaux
+                ou WhatsApp bien mis en avant pour que vos futurs clients vous trouvent rapidement.
               </li>
               <li>
-                <span>Entreprises qui débutent sur le web</span> — vous n’avez pas encore de site
-                ou le vôtre est ancien et ne vous ressemble plus.
+                <span>Un accompagnement sans jargon</span> — nous expliquons chaque étape avec des mots simples,
+                vous savez toujours ce que nous faisons et pourquoi.
               </li>
               <li>
-                <span>Projets avec budget maîtrisé</span> — vous voulez un résultat propre,
-                sérieux et efficace, sans entrer dans le jargon technique.
-              </li>
-              <li>
-                <span>Personnes qui veulent être accompagnées</span> — nous expliquons chaque étape
-                simplement, sans vocabulaire compliqué.
+                <span>Une base solide pour la suite</span> — un site propre, clair et bien structuré,
+                sur lequel vous pourrez ajouter des pages, des services ou des photos plus tard.
               </li>
             </ul>
           </div>
@@ -921,82 +979,81 @@
           carré pour ouvrir le site dans un nouvel onglet.
         </p>
         <div class="realisations-grid">
-<a
-  class="realisations-card"
-  href="https://yousrawsites.github.io/Resto-Indien-Namaste-Paris/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <div>
-    <div class="realisations-thumb">
-      <img src="namaste.png" alt="Aperçu du site Namaste Paris">
-    </div>
-    <div class="realisations-tag">Restaurant</div>
-    <div class="realisations-title"><strong>Namaste Paris</strong></div>
-    <p class="realisations-desc">
-      Site vitrine pour un restaurant indien : présentation du menu,
-      ambiance chaleureuse et mise en avant des avis clients.
-    </p>
-  </div>
-</a>
+          <a
+            class="realisations-card"
+            href="https://yousrawsites.github.io/Resto-Indien-Namaste-Paris/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-thumb">
+                <img src="namaste.png" alt="Aperçu du site Namaste Paris">
+              </div>
+              <div class="realisations-tag">Restaurant</div>
+              <div class="realisations-title"><strong>Namaste Paris</strong></div>
+              <p class="realisations-desc">
+                Site vitrine pour un restaurant indien : présentation du menu,
+                ambiance chaleureuse et mise en avant des avis clients.
+              </p>
+            </div>
+          </a>
 
+          <a
+            class="realisations-card"
+            href="https://imanebenazzouz.github.io/MaisonBianca/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-thumb">
+                <img src="maisb.png" alt="Aperçu du site Maison Bianca">
+              </div>
+              <div class="realisations-tag">Mariage</div>
+              <div class="realisations-title"><strong>Maison Bianca</strong></div>
+              <p class="realisations-desc">
+                Site dédié aux robes de mariée, collections mises en avant et
+                parcours simple pour prendre rendez-vous.
+              </p>
+            </div>
+          </a>
 
-<a
-  class="realisations-card"
-  href="https://imanebenazzouz.github.io/MaisonBianca/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <div>
-    <div class="realisations-thumb">
-      <img src="maisb.png" alt="Aperçu du site Maison Bianca">
-    </div>
-    <div class="realisations-tag">Mariage</div>
-    <div class="realisations-title"><strong>Maison Bianca</strong></div>
-    <p class="realisations-desc">
-      Site dédié aux robes de mariée, collections mises en avant et
-      parcours simple pour prendre rendez-vous.
-    </p>
-  </div>
-</a>
+          <a
+            class="realisations-card"
+            href="https://exemple.com/autres-projets"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-thumb">
+                <img src="captures/autres-projets.jpg" alt="Aperçu d'autres projets sur mesure">
+              </div>
+              <div class="realisations-tag">Sur-mesure</div>
+              <div class="realisations-title"><strong>Autres projets</strong></div>
+              <p class="realisations-desc">
+                Pages d’agences, photobooth, portfolios et sites sur mesure
+                réalisés pour différents clients.
+              </p>
+            </div>
+          </a>
 
-<a
-  class="realisations-card"
-  href="https://exemple.com/autres-projets"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <div>
-    <div class="realisations-thumb">
-      <img src="captures/autres-projets.jpg" alt="Aperçu d'autres projets sur mesure">
-    </div>
-    <div class="realisations-tag">Sur-mesure</div>
-    <div class="realisations-title"><strong>Autres projets</strong></div>
-    <p class="realisations-desc">
-      Pages d’agences, photobooth, portfolios et sites sur mesure
-      réalisés pour différents clients.
-    </p>
-  </div>
-</a>
-
-<a
-  class="realisations-card"
-  href="https://yousrawsites.github.io/Site-Plomberie-Asni-res/#contact"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <div>
-    <div class="realisations-thumb">
-      <img src="plomb.png" alt="Aperçu du site Plomberie Asnières">
-    </div>
-    <div class="realisations-tag">Plomberie</div>
-    <div class="realisations-title"><strong>Plomberie Asnières</strong></div>
-    <p class="realisations-desc">
-      Site vitrine pour un plombier à Asnières : présentation des services,
-      témoignages clients et formulaire de contact pour demander un devis.
-    </p>
-  </div>
-</a>
+          <a
+            class="realisations-card"
+            href="https://yousrawsites.github.io/Site-Plomberie-Asni-res/#contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <div class="realisations-thumb">
+                <img src="plomb.png" alt="Aperçu du site Plomberie Asnières">
+              </div>
+              <div class="realisations-tag">Plomberie</div>
+              <div class="realisations-title"><strong>Plomberie Asnières</strong></div>
+              <p class="realisations-desc">
+                Site vitrine pour un plombier à Asnières : présentation des services,
+                témoignages clients et formulaire de contact pour demander un devis.
+              </p>
+            </div>
+          </a>
 
         </div>
       </div>
@@ -1234,7 +1291,7 @@
 
         <div class="pricing-layout">
           <div class="pricing-grid">
-          
+            <!-- (Tu pourras ajouter une carte de tarif ici plus tard si tu veux) -->
 
             <!-- Formulaire de devis -->
             <form class="devis-box" onsubmit="event.preventDefault(); alert('Demande de devis envoyée (démo) 😊');">
