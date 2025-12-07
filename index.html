@@ -218,6 +218,33 @@
       max-width: 720px;
     }
 
+    /* --- À PROPOS : PHOTOS EN ROND --- */
+
+    #apropos .about-portraits {
+      margin-top: 2rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-portrait {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(247, 232, 203, 0.5);
+      background: #111;
+      flex-shrink: 0;
+    }
+
+    .about-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* --- RÉALISATIONS : CARTES CLIQUABLES --- */
     .realisations-thumb {
       position: relative;
@@ -870,6 +897,15 @@
         <p class="section-content">
           Nous sommes Imane Benazzouz et Yousra Hachmi, toutes les deux diplômées en informatique et spécialisées dans le développement web. Nous réalisons des sites vitrine, des boutiques en ligne (e‑commerce) et des projets plus poussés sur mesure, en fonction de vos besoins et de votre budget. Notre objectif : répondre à votre besoin de manière précise et rapide.
         </p>
+        <!-- Utilise le même fichier de photo pour les deux ronds (imane.png) -->
+        <div class="about-portraits">
+          <div class="about-portrait">
+            <img src="imane.png" alt="Photo de Imane Benazzouz">
+          </div>
+          <div class="about-portrait">
+            <img src="imane.png" alt="Photo de Yousra Hachmi">
+          </div>
+        </div>
       </div>
     </section>
 
