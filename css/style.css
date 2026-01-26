@@ -23,6 +23,11 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* --- SPLASH / LOGO --- */
 
 .splash {
@@ -236,6 +241,7 @@ section:first-of-type {
   height: 100%;
   object-fit: cover;
   display: block;
+  max-width: 100%;
 }
 
 /* --- RÉALISATIONS : CARTES CLIQUABLES --- */
@@ -255,6 +261,8 @@ section:first-of-type {
   transform: scale(1.03);
   transition: transform var(--transition-fast), opacity var(--transition-fast);
   opacity: 0.92;
+  max-width: 100%;
+  display: block;
 }
 
 /* Effet zoom léger au survol de la carte */
@@ -805,8 +813,13 @@ section:first-of-type {
 /* --- RESPONSIVE --- */
 
 @media (max-width: 900px) {
+  main {
+    padding: 0 1.2rem 2.5rem;
+  }
+
   #apropos .about-layout {
     flex-direction: column;
+    gap: 1.5rem;
   }
 
   #apropos .about-photo-card {
@@ -816,6 +829,7 @@ section:first-of-type {
 
   .skills-layout {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .pricing-grid {
@@ -824,49 +838,180 @@ section:first-of-type {
 
   .why-points {
     grid-template-columns: 1fr 1fr;
+    gap: 1.2rem 1.8rem;
+  }
+
+  .experience-timeline {
+    padding-left: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    min-height: auto;
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.9rem;
   }
 }
 
 @media (max-width: 650px) {
   .why-points {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .scroll-top {
+    right: 1rem;
+    bottom: 1.2rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 600px) {
+  main {
+    padding: 0 1rem 2rem;
+  }
+
   .hero {
-    padding-top: 4rem;
+    padding: 3rem 1rem 2rem;
+    min-height: auto;
   }
 
   .hero-title {
-    font-size: 2.6rem;
+    font-size: clamp(2rem, 12vw, 2.6rem);
     letter-spacing: 0.08em;
+    margin-bottom: 1rem;
   }
 
   .hero-subtitle {
     font-size: 0.95rem;
+    margin-bottom: 2rem;
   }
 
   .hero-buttons {
     gap: 1.2rem;
+    width: 100%;
   }
 
   .hero-row {
     gap: 1rem;
+    width: 100%;
   }
 
   .hero-btn {
     width: 100%;
     text-align: center;
+    padding: 0.85rem 2rem;
+    font-size: 0.92rem;
   }
 
   .section-title {
-    font-size: 1.7rem;
+    font-size: clamp(1.5rem, 8vw, 1.7rem);
     letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
   }
 
   .realisations-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .realisations-card {
+    padding: 1.4rem 1.4rem 1.7rem;
+  }
+
+  .experience-timeline {
+    padding-left: 1rem;
+    gap: 1.2rem;
+  }
+
+  .experience-item {
+    padding: 0.9rem 1.1rem 1rem;
+  }
+
+  .experience-dot {
+    left: -1rem;
+  }
+
+  .experience-timeline::before {
+    left: 0.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  main {
+    padding: 0 0.8rem 1.8rem;
+  }
+
+  .hero {
+    padding: 2.5rem 0.8rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.88rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .section-content {
+    font-size: 0.92rem;
+  }
+
+  .realisations-card {
+    padding: 1.2rem 1.2rem 1.5rem;
+  }
+
+  .realisations-title {
+    font-size: 1rem;
+  }
+
+  .realisations-desc {
+    font-size: 0.9rem;
+  }
+
+  .skills-block-title {
+    font-size: 0.8rem;
+  }
+
+  .skills-list {
+    font-size: 0.9rem;
+  }
+
+  .why-point-title {
+    font-size: 0.85rem;
+  }
+
+  .why-point-text {
+    font-size: 0.88rem;
+  }
+
+  .scroll-top {
+    right: 0.8rem;
+    bottom: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 }
 
