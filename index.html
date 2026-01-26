@@ -3,890 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio – Imane & Yousra</title>
+  <title>Portfolio – Imane Benazzouz</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg-dark: #000000;
-      --text-beige: #f7e8cb;
-      --transition-fast: 0.25s ease;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      background: var(--bg-dark);
-      color: var(--text-beige);
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* --- SPLASH / LOGO --- */
-
-    .splash {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 1000;
-      animation: splashIn 0.8s ease-out forwards;
-    }
-
-    .splash-logo {
-      max-width: 900px;
-      width: min(90vw, 900px);
-    }
-
-    .splash-text {
-      margin-top: 1.2rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-    }
-
-    body.loaded .splash {
-      animation: splashOut 0.9s ease-in forwards;
-      pointer-events: none;
-    }
-
-    @keyframes splashIn {
-      from {
-        opacity: 0;
-        transform: scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes splashOut {
-      to {
-        opacity: 0;
-        transform: scale(1.05);
-      }
-    }
-
-    /* --- HERO (ACCUEIL) --- */
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 3rem 1.5rem;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
-    }
-
-    body.loaded .hero {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .hero-title {
-      font-family: "Anton", system-ui, sans-serif;
-      font-size: clamp(3.2rem, 14vw, 7rem);
-      letter-spacing: 0.14em;
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 3rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-      align-items: center;
-    }
-
-    .hero-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .hero-row-single .hero-btn {
-      min-width: 240px;
-    }
-
-    .hero-btn {
-      display: inline-block;
-      padding: 0.95rem 3rem;
-      border-radius: 999px;
-      border: 2px solid var(--text-beige);
-      background: transparent;
-      color: var(--text-beige);
-      font-size: 0.98rem;
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color var(--transition-fast),
-                  color var(--transition-fast),
-                  transform var(--transition-fast),
-                  box-shadow var(--transition-fast);
-    }
-
-    .hero-btn:hover {
-      background: var(--text-beige);
-      color: var(--bg-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-btn:active {
-      transform: translateY(0);
-      box-shadow: none;
-    }
-
-    /* --- SECTIONS PLEIN ÉCRAN --- */
-
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1.5rem 3rem;
-    }
-
-    section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-top: 1px solid rgba(247, 232, 203, 0.12);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    section.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section:first-of-type {
-      border-top: none;
-    }
-
-    .section-title {
-      font-family: "Anton", system-ui, sans-serif;
-      font-size: 2.2rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-    }
-
-    .section-subtitle {
-      max-width: 620px;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: rgba(247, 232, 203, 0.82);
-      margin-bottom: 1.8rem;
-    }
-
-    .section-content {
-      font-size: 0.98rem;
-      line-height: 1.8;
-      color: rgba(247, 232, 203, 0.9);
-      max-width: 720px;
-    }
-
-    /* --- À PROPOS : PHOTOS EN ROND --- */
-
-    #apropos .about-portraits {
-      margin-top: 2rem;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .about-portrait {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px solid rgba(247, 232, 203, 0.5);
-      background: #111;
-      flex-shrink: 0;
-    }
-
-    .about-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* --- RÉALISATIONS : CARTES CLIQUABLES --- */
-    .realisations-thumb {
-      position: relative;
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 0.9rem;
-      background: #111;
-      aspect-ratio: 16 / 9; /* garde un beau format paysage, responsive */
-    }
-
-    .realisations-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.03);
-      transition: transform var(--transition-fast), opacity var(--transition-fast);
-      opacity: 0.92;
-    }
-
-    /* Effet zoom léger au survol de la carte */
-    .realisations-card:hover .realisations-thumb img {
-      transform: scale(1.08);
-      opacity: 1;
-    }
-
-    .realisations-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.8rem;
-      margin-top: 1.4rem;
-    }
-
-    .realisations-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 0.9rem;
-      padding: 1.6rem 1.6rem 1.9rem;
-      border-radius: 18px;
-      border: 1px solid rgba(247, 232, 203, 0.16);
-      background: #070707;
-      text-decoration: none;
-      color: var(--text-beige);
-      cursor: pointer;
-      transition: transform var(--transition-fast),
-                  box-shadow var(--transition-fast),
-                  border-color var(--transition-fast),
-                  background-color var(--transition-fast);
-      min-height: 190px;
-    }
-
-    #apropos .section-title {
-      position: relative;
-      display: inline-block;
-    }
-
-    .realisations-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-      border-color: rgba(247, 232, 203, 0.35);
-      background: #0b0b0b;
-    }
-
-    .realisations-tag {
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(247, 232, 203, 0.7);
-      margin-bottom: 0.3rem;
-    }
-
-    .realisations-title {
-      font-size: 1.08rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .realisations-desc {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: rgba(247, 232, 203, 0.88);
-    }
-
-    /* --- COMPÉTENCES : VERSION CLIENT (NOUVEAU DESIGN) --- */
-
-    #competences {
-      align-items: flex-start;
-    }
-
-    #competences > div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-      align-items: flex-start;
-    }
-
-    .skills-layout {
-      width: 100%;
-      max-width: 980px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
-      gap: 2.6rem;
-      align-items: flex-start;
-      padding-top: 0.6rem;
-    }
-
-    .skills-block {
-      padding: 0;
-      border: none;
-      background: transparent;
-    }
-
-    .skills-block-title {
-      font-size: 0.86rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(247, 232, 203, 0.7);
-      margin-bottom: 0.9rem;
-    }
-
-    .skills-list {
-      position: relative;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      font-size: 0.96rem;
-      line-height: 1.7;
-      color: rgba(247, 232, 203, 0.9);
-      z-index: 1;
-    }
-
-    .skills-list li {
-      position: relative;
-      padding-left: 1.4rem;
-    }
-
-    .skills-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.55rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      border: 1px solid rgba(247, 232, 203, 0.85);
-      background: #050505;
-    }
-
-    .skills-list li span {
-      font-weight: 500;
-    }
-
-    /* --- SECTION POURQUOI NOUS CHOISIR : STYLE ALIGNÉ SUR COMPÉTENCES --- */
-
-    .why-wrapper {
-      max-width: 980px;
-      padding-top: 0.6rem;
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 0;
-      border: none;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .why-header {
-      margin-bottom: 1.6rem;
-    }
-
-    .why-kicker {
-      font-size: 0.86rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(247, 232, 203, 0.7);
-      margin-bottom: 0.4rem;
-    }
-
-    .why-title-inline {
-      font-size: 1.05rem;
-      font-weight: 500;
-      max-width: 620px;
-      line-height: 1.7;
-      color: rgba(247, 232, 203, 0.9);
-    }
-
-    .why-points {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
-      gap: 1.4rem 2.4rem;
-      margin-top: 1.2rem;
-    }
-
-    .why-point {
-      position: relative;
-      padding-left: 1.4rem;
-    }
-
-    .why-dot {
-      position: absolute;
-      left: 0;
-      top: 0.55rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      border: 1px solid rgba(247, 232, 203, 0.85);
-      background: #050505;
-    }
-
-    .why-point-title {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 0.25rem;
-      color: rgba(247, 232, 203, 0.9);
-    }
-
-    .why-point-text {
-      font-size: 0.93rem;
-      color: rgba(247, 232, 203, 0.88);
-      line-height: 1.7;
-    }
-
-    /* --- MÉTHODE : ÉTAPES NUMÉROTÉES --- */
-
-    .step-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-      max-width: 720px;
-      margin-top: 0.5rem;
-    }
-
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.1rem;
-      padding: 1.2rem 1.3rem 1.3rem;
-      border-radius: 16px;
-      background: rgba(7, 7, 7, 0.9);
-      border: 1px solid rgba(247, 232, 203, 0.12);
-      transition: transform var(--transition-fast),
-                  box-shadow var(--transition-fast),
-                  border-color var(--transition-fast),
-                  background-color var(--transition-fast);
-    }
-
-    .step-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.7);
-      border-color: rgba(247, 232, 203, 0.4);
-      background: #0b0b0b;
-    }
-
-    .step-number {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid rgba(247, 232, 203, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-top: 0.2rem;
-      flex-shrink: 0;
-    }
-
-    .step-body {
-      font-size: 0.98rem;
-      line-height: 1.8;
-      color: rgba(247, 232, 203, 0.9);
-    }
-
-    .step-title {
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.86rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .step-text {
-      margin-bottom: 0.25rem;
-    }
-
-    .step-highlight {
-      font-size: 0.85rem;
-      opacity: 0.9;
-      color: rgba(247, 232, 203, 0.82);
-    }
-
-    /* --- DEVIS / TARIFS --- */
-
-    .pricing-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-      max-width: 900px;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-      gap: 1.8rem;
-    }
-
-    .pricing-card {
-      background: #080808;
-      border-radius: 20px;
-      border: 1px solid rgba(247, 232, 203, 0.22);
-      padding: 1.8rem 1.7rem 2rem;
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.75);
-    }
-
-    .pricing-label {
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(247, 232, 203, 0.7);
-      margin-bottom: 0.4rem;
-    }
-
-    .pricing-title {
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-    }
-
-    .pricing-price {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-
-    .pricing-details {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(247, 232, 203, 0.9);
-      margin-bottom: 0.8rem;
-    }
-
-    .pricing-list {
-      list-style: none;
-      font-size: 0.92rem;
-      line-height: 1.7;
-      color: rgba(247, 232, 203, 0.9);
-    }
-
-    .pricing-list li::before {
-      content: "• ";
-      opacity: 0.85;
-    }
-
-    /* Devis form (à droite) */
-
-    .devis-box {
-      background: #0a0a0a;
-      border-radius: 20px;
-      border: 1px solid rgba(247, 232, 203, 0.12);
-      padding: 2.1rem 1.9rem 2.4rem;
-      max-width: 680px;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65);
-    }
-
-    .devis-box label {
-      display: block;
-      font-size: 0.86rem;
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .devis-box input,
-    .devis-box textarea {
-      width: 100%;
-      padding: 0.8rem 0.9rem;
-      border-radius: 12px;
-      border: 1px solid rgba(247, 232, 203, 0.25);
-      background: #050505;
-      color: var(--text-beige);
-      font-family: inherit;
-      font-size: 0.92rem;
-      margin-bottom: 1.1rem;
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .devis-box input:focus,
-    .devis-box textarea:focus {
-      border-color: rgba(247, 232, 203, 0.8);
-      box-shadow: 0 0 0 1px rgba(247, 232, 203, 0.3);
-    }
-
-    .devis-box textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .contact-submit {
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-      padding: 0.9rem 2.6rem;
-      border-radius: 999px;
-      background: var(--text-beige);
-      color: var(--bg-dark);
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: background-color var(--transition-fast),
-                  transform var(--transition-fast),
-                  box-shadow var(--transition-fast);
-    }
-
-    .contact-submit:hover {
-      background: #fff1d6;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-    }
-
-    .contact-submit:active {
-      transform: translateY(0);
-      box-shadow: none;
-    }
-
-    /* --- FAQ ACCORDÉON --- */
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      max-width: 760px;
-    }
-
-    .faq-item {
-      border-radius: 14px;
-      border: 1px solid rgba(247, 232, 203, 0.18);
-      background: #070707;
-      overflow: hidden;
-      transition: border-color var(--transition-fast),
-                  background-color var(--transition-fast),
-                  box-shadow var(--transition-fast);
-    }
-
-    .faq-item.is-open {
-      border-color: rgba(247, 232, 203, 0.5);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-      background: #0b0b0b;
-    }
-
-    .faq-question {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      padding: 0.95rem 1.1rem 0.95rem 1.1rem;
-      font-size: 0.98rem;
-      color: var(--text-beige);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-
-    .faq-question-text {
-      font-weight: 500;
-    }
-
-    .faq-icon {
-      margin-left: 1rem;
-      font-size: 1.2rem;
-      transition: transform var(--transition-fast);
-    }
-
-    .faq-item.is-open .faq-icon {
-      transform: rotate(90deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.25s ease;
-    }
-
-    .faq-answer-inner {
-      padding: 0 1.1rem 0.9rem 1.1rem;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(247, 232, 203, 0.9);
-    }
-
-    /* --- FOOTER --- */
-
-    .footer {
-      text-align: center;
-      padding: 1.5rem 1.5rem 2.5rem;
-      font-size: 0.8rem;
-      color: rgba(247, 232, 203, 0.6);
-      border-top: 1px solid rgba(247, 232, 203, 0.12);
-      background: #050505;
-    }
-
-    /* --- BOUTON RETOUR HAUT --- */
-
-    .scroll-top {
-      position: fixed;
-      right: 1.5rem;
-      bottom: 1.6rem;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(247, 232, 203, 0.4);
-      background: rgba(5, 5, 5, 0.92);
-      color: var(--text-beige);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      transition: opacity var(--transition-fast), transform var(--transition-fast),
-                  background-color var(--transition-fast), box-shadow var(--transition-fast);
-      font-size: 1.2rem;
-    }
-
-    .scroll-top.is-visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-      animation: scrollTopPulse 1.6s infinite;
-    }
-
-    .scroll-top:hover {
-      background: var(--text-beige);
-      color: var(--bg-dark);
-      box-shadow: 0 0 0 4px rgba(247, 232, 203, 0.25);
-    }
-
-    @keyframes scrollTopPulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(71, 69, 63, 0.55);
-        transform: translateY(0) scale(1);
-      }
-      60% {
-        box-shadow: 0 0 0 14px rgba(247, 232, 203, 0);
-        transform: translateY(-3px) scale(1.06);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(247, 232, 203, 0);
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* --- RESPONSIVE --- */
-
-    @media (max-width: 900px) {
-      .skills-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .why-points {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 650px) {
-      .why-points {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        padding-top: 4rem;
-      }
-
-      .hero-title {
-        font-size: 2.6rem;
-        letter-spacing: 0.08em;
-      }
-
-      .hero-subtitle {
-        font-size: 0.95rem;
-      }
-
-      .hero-buttons {
-        gap: 1.2rem;
-      }
-
-      .hero-row {
-        gap: 1rem;
-      }
-
-      .hero-btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .section-title {
-        font-size: 1.7rem;
-        letter-spacing: 0.12em;
-      }
-
-      .realisations-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- SPLASH / LOGO -->
-  <div class="splash">
-    <img src="logoIYdigitalstudio.svg" alt="I&Y Digital Studio" class="splash-logo">
-  </div>
+  <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
 
   <!-- HERO / ACCUEIL -->
   <div id="top" class="hero">
     <h1 class="hero-title">PORTFOLIO</h1>
-    <p class="hero-subtitle">Imane Benazzouz - Yousra Hachmi</p>
+    <p class="hero-subtitle">Imane Benazzouz</p>
 
     <div class="hero-buttons">
       <div class="hero-row">
-        <a href="#apropos" class="hero-btn">À propos de nous</a>
-        <a href="#competences" class="hero-btn">Nos compétences</a>
-        <a href="#realisations" class="hero-btn">Nos réalisations</a>
+        <a href="#apropos" class="hero-btn">À propos de moi</a>
+        <a href="#competences" class="hero-btn">Mes compétences</a>
+        <a href="#realisations" class="hero-btn">Mes réalisations</a>
       </div>
       <div class="hero-row">
-        <a href="#methode" class="hero-btn">Notre méthode</a>
-        <a href="#choisir" class="hero-btn">Pourquoi nous ?</a>
-        <a href="#faq" class="hero-btn">FAQ</a>
+        <a href="#methode" class="hero-btn">Mes expériences</a>
+        <a href="#choisir" class="hero-btn">Pourquoi moi ?</a>
+        <a href="#faq" class="hero-btn">Contact</a>
       </div>
       <div class="hero-row hero-row-single">
-        <a href="#devis" class="hero-btn">Devis & tarifs</a>
+        <a href="#devis" class="hero-btn">GitHub</a>
       </div>
     </div>
   </div>
@@ -896,65 +40,89 @@
     <!-- À PROPOS -->
     <section id="apropos">
       <div>
-        <h2 class="section-title">À propos de nous</h2>
-        <p class="section-subtitle">
-          Deux développeuses web diplômées, qui créent des sites modernes, fiables et pensés pour vos clients.
-        </p>
-        <p class="section-content">
-          Nous sommes Imane Benazzouz et Yousra Hachmi, toutes les deux diplômées en informatique et spécialisées dans le développement web. Nous réalisons des sites vitrine, des boutiques en ligne (e‑commerce) et des projets plus poussés sur mesure, en fonction de vos besoins et de votre budget. Notre objectif : répondre à votre besoin de manière précise et rapide.
-        </p>
+        <h2 class="section-title">À propos de moi</h2>
+        <div class="about-layout">
+          <div class="about-text">
+            <p class="section-content">
+              Je m’appelle Imane Benazzouz, j’ai 22 ans et je suis étudiante en informatique. Passionnée par le développement et l’intelligence artificielle, je ne me contente pas de suivre les technologies : je les questionne, je les comprends et je les transforme en solutions concrètes.
+              <br><br>
+              Je validerai mon Bac+3 en informatique en septembre au sein de l’IUT de Villetaneuse, l’un des IUT les mieux notés, et le seul à proposer un enseignement dédié à l’intelligence artificielle.
+              Depuis deux ans en alternance au sein de l’entreprise AIGS, j’ai acquis une solide expérience professionnelle et une vraie autonomie.
+              <br><br>
+              J’y ai notamment développé from scratch une application web éducative en Java, en participant à toutes les étapes du projet : conception, développement, tests et déploiement.
+              <br><br>
+              Au-delà de la technique, je me distingue par mon intelligence émotionnelle, mon adaptabilité et ma capacité à rester performante sous pression.
+              Mon objectif : créer des solutions innovantes à fort impact, à la croisée du développement et de l’IA.
+            </p>
+          </div>
+          <div class="about-photo-card">
+            <img src="imane.png" alt="Photo d'Imane Benazzouz">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- COMPÉTENCES (VERSION CLIENT) -->
+    <!-- COMPÉTENCES -->
     <section id="competences">
       <div>
-        <h2 class="section-title">Nos compétences</h2>
+        <h2 class="section-title">Mes compétences</h2>
         <p class="section-subtitle">
-          Notre métier : transformer votre idée en un site vitrine ou une petite boutique en ligne
-          qui donne une vraie bonne impression, rassure vos clients et les aide à passer à l’action.
+          Un aperçu des technologies et domaines que je maîtrise, du développement web à l’intelligence artificielle.
         </p>
 
         <div class="skills-layout">
-          <!-- Bloc 1 : ce que nous faisons concrètement -->
           <div class="skills-block">
-            <div class="skills-block-title">Concrètement, ce que nous faisons pour vous</div>
+            <div class="skills-block-title">Langages de programmation</div>
             <ul class="skills-list">
-              <li>
-                <span>Création de site vitrine</span> — nous vous créons des sites à l’image de votre marque,
-                avec les pages essentielles pour présenter votre activité et donner confiance.
-              </li>
-              <li>
-                <span>Création de site e‑commerce</span> — boutique en ligne simple et claire,
-                à l’image de votre marque, pour mettre en avant vos produits et faciliter les commandes.
-              </li>
-              <li>
-                <span>Création de site sur mesure</span> — site personnalisé, à l’image de votre marque,
-                adapté à votre activité et à vos besoins spécifiques (services, portfolio, réservation…).
-              </li>
+              <li>Java (POO, Spring Boot, tests JUnit, Mockito)</li>
+              <li>JavaScript (React, Node.js)</li>
+              <li>Python (scripts, data, FastAPI)</li>
+              <li>Dart (Flutter mobile)</li>
+              <li>HTML / CSS (responsive, animations, Tailwind, Framer Motion)</li>
+              <li>SQL (PostgreSQL, MySQL, requêtes avancées)</li>
+              <li>Bash (scripts système, Docker)</li>
             </ul>
           </div>
 
-          <!-- Bloc 2 : ce que vous y gagnez -->
           <div class="skills-block">
-            <div class="skills-block-title">Les bénéfices pour votre activité</div>
+            <div class="skills-block-title">Bases de données</div>
             <ul class="skills-list">
-              <li>
-                <span>Une image professionnelle et cohérente</span> — un site qui donne confiance,
-                qui reflète votre sérieux et votre manière de travailler.
-              </li>
-              <li>
-                <span>Plus de prises de contact</span> — téléphone, formulaire, réseaux sociaux
-                ou WhatsApp bien mis en avant pour que vos futurs clients vous trouvent rapidement.
-              </li>
-              <li>
-                <span>Un accompagnement sans jargon</span> — nous expliquons chaque étape avec des mots simples,
-                vous savez toujours ce que nous faisons et pourquoi.
-              </li>
-              <li>
-                <span>Une base solide pour la suite</span> — un site propre, clair et bien structuré,
-                sur lequel vous pourrez ajouter des pages, des services ou des photos plus tard.
-              </li>
+              <li>PostgreSQL (modélisation, relations, contraintes, requêtes avancées)</li>
+              <li>MySQL (schémas, CRUD)</li>
+              <li>MongoDB (find, update, filtres, pipelines)</li>
+              <li>Firebase Firestore</li>
+            </ul>
+          </div>
+
+          <div class="skills-block">
+            <div class="skills-block-title">Architecture de logiciels</div>
+            <ul class="skills-list">
+              <li>MVC (Spring Boot, structure React)</li>
+              <li>Docker (images, Dockerfile, volumes, réseaux, compose)</li>
+              <li>Architecture 3-tiers (Frontend / Backend / DB)</li>
+            </ul>
+          </div>
+
+          <div class="skills-block">
+            <div class="skills-block-title">Sécurité</div>
+            <ul class="skills-list">
+              <li>Sécurisation d’API REST</li>
+              <li>Gestion des permissions / authentification (middleware, Firebase Rules)</li>
+              <li>Sécurité web (XSS, CSRF, validation d’input)</li>
+              <li>VPN IPsec</li>
+            </ul>
+          </div>
+
+          <div class="skills-block">
+            <div class="skills-block-title">Machine Learning & IA</div>
+            <ul class="skills-list">
+              <li>Perceptron & MLP (classification, fonctions d’activation, rétropropagation)</li>
+              <li>Réseaux de neurones convolutionnels (CNN) pour le traitement d’images</li>
+              <li>Transformers / modèles de langage (compréhension et traitement du texte)</li>
+              <li>Arbres de décision (modèles interprétables, explicabilité)</li>
+              <li>Machines à vecteurs de support (SVM) sur jeux de données restreints ou complexes</li>
+              <li>Pipeline ML (préparation des données, split train/val/test, métriques, overfitting)</li>
+              <li>TensorFlow / Keras (entraînement, évaluation, export vers mobile type TFLite)</li>
             </ul>
           </div>
         </div>
@@ -963,9 +131,9 @@
 
     <section id="realisations">
       <div>
-        <h2 class="section-title">Nos réalisations</h2>
+        <h2 class="section-title">Mes réalisations</h2>
         <p class="section-subtitle">
-              Quelques exemples de projets que nous avons réalisés. Cliquez sur un
+              Quelques exemples de projets que j’ai réalisés ou co-réalisés. Cliquez sur un
               carré pour ouvrir la démo dans un nouvel onglet.
             </p>
             <div class="realisations-grid">
@@ -1069,130 +237,140 @@
                   </p>
                 </div>
               </a>
+
+              <!-- App Vélib' -->
+              <div class="realisations-card">
+                <div>
+                  <div class="realisations-thumb"></div>
+                  <div class="realisations-tag">Application mobile</div>
+                  <div class="realisations-title"><strong>App Vélib'</strong></div>
+                  <p class="realisations-desc">
+                    Application permettant de visualiser les stations Vélib', leurs disponibilités et de planifier ses trajets
+                    facilement, avec une interface claire et moderne.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Ikraa -->
+              <div class="realisations-card">
+                <div>
+                  <div class="realisations-thumb"></div>
+                  <div class="realisations-tag">Application éducative</div>
+                  <div class="realisations-title"><strong>Ikraa</strong></div>
+                  <p class="realisations-desc">
+                    Application web éducative développée from scratch en Java, couvrant toutes les étapes du projet :
+                    conception, développement, tests et déploiement, avec une interface pensée pour l’apprentissage.
+                  </p>
+                </div>
+              </div>
+
+              <!-- WhoamAI -->
+              <div class="realisations-card">
+                <div>
+                  <div class="realisations-thumb"></div>
+                  <div class="realisations-tag">Intelligence artificielle</div>
+                  <div class="realisations-title"><strong>WhoamAI</strong></div>
+                  <p class="realisations-desc">
+                    Projet autour de l’intelligence artificielle, combinant analyse de données et modèles de machine learning
+                    pour offrir une expérience personnalisée et intelligente à l’utilisateur.
+                  </p>
+                </div>
+              </div>
     
         </div>
       </div>
     </section>
 
-    <!-- MÉTHODE -->
+    <!-- EXPÉRIENCES -->
     <section id="methode">
       <div>
-        <h2 class="section-title">Notre méthode</h2>
-        <p class="section-subtitle">
-          Une façon de travailler simple, structurée et rassurante. Vous savez où on va à chaque étape,
-          et vous validez avant que l’on avance.
-        </p>
-        <div class="step-list">
-          <div class="step-item">
-            <div class="step-number">1</div>
-            <div class="step-body">
-              <div class="step-title">Échange & compréhension de votre activité</div>
-              <p class="step-text">
-                Nous discutons de votre métier, de vos objectifs (être contacté, réserver, vendre,
-                inspirer confiance…) et des sites que vous aimez. Vous pouvez tout nous dire, même si
-                ce n’est pas “technique”.
-              </p>
-              <p class="step-highlight">
-                Vous gagnez : une vision claire de ce que votre futur site va raconter sur vous.
-              </p>
-            </div>
-          </div>
+        <h2 class="section-title">Mes expériences</h2>
+        <div class="experience-timeline">
+          <article class="experience-item">
+            <span class="experience-dot"></span>
+            <header class="experience-header">
+              <div class="experience-meta">2024 – Présent — AIGS</div>
+              <div class="experience-role">Développeuse Full-stack</div>
+            </header>
+            <ul class="experience-details">
+              <li>Conception d’une application web éducative (Ikraa).</li>
+              <li>Développement complet : backend, frontend, base de données.</li>
+              <li>Mise en place des règles d’authentification, sécurité, interface responsive.</li>
+            </ul>
+          </article>
 
-          <div class="step-item">
-            <div class="step-number">2</div>
-            <div class="step-body">
-              <div class="step-title">Structure & proposition de pages</div>
-              <p class="step-text">
-                Nous vous proposons une structure simple et efficace : quelles pages, quelles sections,
-                quels boutons importants. L’idée est que vos futurs clients trouvent l’information en
-                quelques secondes.
-              </p>
-              <p class="step-highlight">
-                Vous gagnez : un plan de site validé ensemble avant de commencer le design.
-              </p>
-            </div>
-          </div>
-
-          <div class="step-item">
-            <div class="step-number">3</div>
-            <div class="step-body">
-              <div class="step-title">Maquette & développement</div>
-              <p class="step-text">
-                Nous construisons votre site section par section (accueil, services, collections,
-                contact, FAQ…), en vous montrant l’avancement. Vous pouvez demander des ajustements
-                au fur et à mesure.
-              </p>
-              <p class="step-highlight">
-                Vous gagnez : un site sur mesure, fidèle à votre image, validé étape par étape.
-              </p>
-            </div>
-          </div>
-
-          <div class="step-item">
-            <div class="step-number">4</div>
-            <div class="step-body">
-              <div class="step-title">Tests, mobile & mise en ligne</div>
-              <p class="step-text">
-                Nous testons l’affichage sur mobile, tablette et ordinateur, les formulaires, les liens
-                et le temps de chargement. Une fois que tout est bon, nous mettons le site en ligne
-                et nous vous expliquons les bases pour la suite.
-              </p>
-              <p class="step-highlight">
-                Vous gagnez : un site prêt à être partagé à vos clients, dès le premier jour.
-              </p>
-            </div>
-          </div>
+          <article class="experience-item">
+            <span class="experience-dot"></span>
+            <header class="experience-header">
+              <div class="experience-meta">2025 — Projet Maison Bianca</div>
+              <div class="experience-role">Développeuse Full-stack</div>
+            </header>
+            <ul class="experience-details">
+              <li>Création d’un site vitrine professionnel pour une marque de robes de mariée.</li>
+              <li>Développement from scratch, optimisation UX, mise en ligne GitHub Pages.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- POURQUOI NOUS CHOISIR (VERSION PREMIUM) -->
+    <!-- POURQUOI MOI ? (VERSION PREMIUM) -->
     <section id="choisir">
       <div>
-        <h2 class="section-title">Pourquoi nous choisir&nbsp;?</h2>
+        <h2 class="section-title">Pourquoi moi&nbsp;?</h2>
         <div class="why-wrapper">
-          <div class="why-header">
-            <div class="why-kicker">Votre site, sans complication</div>
-            <div class="why-title-inline">
-              Vous travaillez avec un duo impliqué, qui respecte votre budget
-              <br>et parle un langage compréhensible.
-            </div>
-          </div>
-
           <div class="why-points">
             <div class="why-point">
               <span class="why-dot"></span>
-              <div class="why-point-title">Prix abordables & clairs</div>
+              <div class="why-point-title">Un profil polyvalent et structuré</div>
               <p class="why-point-text">
-                Nous adaptons le projet à votre budget (création d’activité, petite structure,
-                indépendant…). Vous savez ce qui est inclus, sans frais cachés.
+                Je possède une solide formation en informatique couvrant le développement logiciel, les bases de données,
+                l’architecture et les fondements de l’intelligence artificielle.
               </p>
             </div>
 
             <div class="why-point">
               <span class="why-dot"></span>
-              <div class="why-point-title">Réactivité au quotidien</div>
+              <div class="why-point-title">Une vraie capacité d’analyse</div>
               <p class="why-point-text">
-                Nous répondons rapidement et avançons par petits retours. Vous savez où en est le site
-                et vous pouvez réagir à chaque étape.
+                J’aborde chaque projet avec une approche méthodique : compréhension du problème, choix techniques justifiés
+                et recherche de solutions durables.
               </p>
             </div>
 
             <div class="why-point">
               <span class="why-dot"></span>
-              <div class="why-point-title">Ajustements en cours de route</div>
+              <div class="why-point-title">Intérêt marqué pour l’IA et la data</div>
               <p class="why-point-text">
-                Vos idées évoluent en voyant le site ? C’est normal. Nous prévoyons des ajustements
-                pour que le résultat final vous ressemble vraiment.
+                Je m’intéresse particulièrement aux modèles de machine learning et à leur intégration dans des applications
+                concrètes, en tenant compte des enjeux de performance et d’explicabilité.
               </p>
             </div>
 
             <div class="why-point">
               <span class="why-dot"></span>
-              <div class="why-point-title">Accompagnement & pédagogie</div>
+              <div class="why-point-title">Rigueur, autonomie et fiabilité</div>
               <p class="why-point-text">
-                Vous n’êtes pas obligé·e d’aimer l’informatique. Notre rôle, c’est de traduire
-                vos besoins en quelque chose de simple pour vous, et clair pour vos clients, même après la mise en ligne.
+                Habituée aux projets exigeants, je sais travailler de manière autonome tout en m’intégrant efficacement
+                dans une équipe.
+              </p>
+            </div>
+
+            <div class="why-point">
+              <span class="why-dot"></span>
+              <div class="why-point-title">Capacité d’adaptation et apprentissage continu</div>
+              <p class="why-point-text">
+                Curieuse et proactive, je me forme régulièrement sur de nouvelles technologies et méthodes afin de rester
+                alignée avec les évolutions du domaine.
+              </p>
+            </div>
+
+            <div class="why-point">
+              <span class="why-dot"></span>
+              <div class="why-point-title">Une vraie expérience du monde professionnel</div>
+              <p class="why-point-text">
+                Grâce à mes deux années d’alternance au sein d’AIGS, j’ai travaillé sur des projets concrets en conditions réelles,
+                ce qui m’a permis de développer des réflexes professionnels, le sens des priorités et une forte autonomie.
               </p>
             </div>
           </div>
@@ -1200,134 +378,39 @@
       </div>
     </section>
 
-    <!-- FAQ (ACCORDÉON) -->
+    <!-- CONTACT -->
     <section id="faq">
       <div>
-        <h2 class="section-title">FAQ</h2>
+        <h2 class="section-title">Contact</h2>
         <p class="section-subtitle">
-          Les questions que nos clients posent le plus souvent, avec des réponses simples et honnêtes.
+          Pour me joindre directement pour un projet, une opportunité ou une question, voici mes coordonnées.
         </p>
 
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span class="faq-question-text">Combien de temps faut-il pour créer un site&nbsp;?</span>
-              <span class="faq-icon">›</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                En général, entre 1 et 3 semaines. Tout dépend du nombre de pages, de la complexité du contenu
-                et de la rapidité de vos retours. Dès le début du projet, nous vous donnons un délai estimé
-                et nous vous prévenons si quelque chose peut l’allonger.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span class="faq-question-text">Quel budget faut-il prévoir&nbsp;?</span>
-              <span class="faq-icon">›</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                Le prix dépend du nombre de pages, des fonctionnalités (formulaire, mise en avant de collections,
-                FAQ, galerie photos…) et du niveau de personnalisation. Dites-nous simplement votre budget approximatif
-                et nous vous proposons une solution adaptée, en toute transparence.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span class="faq-question-text">Faut-il déjà avoir tous les textes et toutes les photos&nbsp;?</span>
-              <span class="faq-icon">›</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                Si vous avez déjà des textes et des visuels, c’est parfait. Sinon, aucun souci :
-                nous pouvons vous guider sur ce qu’il faut écrire, quelles rubriques prévoir,
-                et quel type de photos fonctionne le mieux pour votre activité.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span class="faq-question-text">Pourrai-je modifier mon site plus tard&nbsp;?</span>
-              <span class="faq-icon">›</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                Oui. Selon la solution choisie, nous pouvons vous montrer comment modifier certains contenus simples
-                (horaires, textes, tarifs…), ou bien prévoir des petites interventions de notre part pour les mises à jour.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span class="faq-question-text">Est-ce que vous vous occupez aussi du nom de domaine et de l’hébergement&nbsp;?</span>
-              <span class="faq-icon">›</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                Nous pouvons vous conseiller pour choisir un nom de domaine et un hébergeur adaptés à votre situation.
-                Si besoin, nous vous accompagnons pas à pas dans la configuration, pour que votre site soit accessible
-                sans que vous ayez à gérer la partie technique seul·e.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" type="button">
-              <span class="faq-question-text">Comment se passent les échanges pendant le projet&nbsp;?</span>
-              <span class="faq-icon">›</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                Nous fonctionnons avec des points réguliers (messages, mail ou visio) pour vous montrer l’avancement.
-                Vous validez les grandes étapes (structure, design, contenus) avant la mise en ligne.
-                L’objectif : que vous soyez à l’aise et en confiance du début à la fin.
-              </div>
-            </div>
-          </div>
+        <div class="section-content">
+          <p><strong>Numéro :</strong> 06 67 65 03 12</p>
+          <p><strong>Mail :</strong> <a href="mailto:imvnenbz@gmail.com" style="color: inherit; text-decoration: underline;">imvnenbz@gmail.com</a></p>
+          <p><strong>Adresse :</strong> 35 rue Alexandre Founy, 94500</p>
         </div>
       </div>
     </section>
 
-    <!-- DEVIS & TARIFS -->
+    <!-- GITHUB -->
     <section id="devis">
       <div>
-        <h2 class="section-title">Devis & tarifs</h2>
+        <h2 class="section-title">GitHub</h2>
         <p class="section-subtitle">
-          Une première offre simple pour vous donner un ordre d’idée, et un formulaire
-          pour nous expliquer votre projet plus en détail.
+          Accédez directement à l’ensemble de mes projets, contributions et codes sources sur mon profil GitHub.
         </p>
 
-        <div class="pricing-layout">
-          <div class="pricing-grid">
-            <!-- (Tu pourras ajouter une carte de tarif ici plus tard si tu veux) -->
-
-            <!-- Formulaire de devis -->
-        <form class="devis-box" onsubmit="event.preventDefault(); alert('Demande de devis envoyée (démo) 😊');">
-          <label for="name">Nom / Prénom</label>
-          <input id="name" type="text" placeholder="Votre nom complet" required>
-
-          <label for="project">Type de projet</label>
-          <input id="project" type="text" placeholder="Ex : site restaurant, boutique, agence..." required>
-
-              <label for="phone">Numéro de téléphone</label>
-              <input id="phone" type="tel" placeholder="Ex : 06 12 34 56 78" required>
-
-          <label for="budget">Budget estimé</label>
-              <input id="budget" type="text" placeholder="€">
-
-          <label for="message">Détail du projet</label>
-          <textarea id="message" placeholder="Parlez-nous de vos besoins, pages souhaitées, délais..." required></textarea>
-
-          <button type="submit" class="contact-submit">Envoyer ma demande</button>
-        </form>
-          </div>
+        <div class="hero-row hero-row-single">
+          <a
+            href="https://github.com/imanebenazzouz"
+            class="hero-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Voir mon GitHub
+          </a>
         </div>
       </div>
     </section>
@@ -1335,7 +418,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    © 2025 Imane Benazzouz & Yousra Hachmi — Tous droits réservés.
+    © 2025 Imane Benazzouz — Tous droits réservés.
   </footer>
 
   <!-- Bouton retour en haut -->
@@ -1344,87 +427,6 @@
   </button>
 
   <!-- JS : splash, retour haut, animation sections, FAQ accordéon -->
-  <script>
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    window.addEventListener('load', () => {
-        window.scrollTo(0, 0);
-
-      setTimeout(() => {
-        document.body.classList.add('loaded');
-      }, 1600);
-    });
-
-    const scrollTopButton = document.querySelector('.scroll-top');
-
-    window.addEventListener('scroll', () => {
-      if (!scrollTopButton) return;
-      if (window.scrollY > 320) {
-        scrollTopButton.classList.add('is-visible');
-      } else {
-        scrollTopButton.classList.remove('is-visible');
-      }
-    });
-
-    scrollTopButton?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Animation des sections au scroll
-    const sections = document.querySelectorAll('main section');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      },
-      {
-        threshold: 0.18,
-      }
-    );
-    sections.forEach((section) => observer.observe(section));
-
-    // FAQ accordéon
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach((item) => {
-      const questionBtn = item.querySelector('.faq-question');
-      const answer = item.querySelector('.faq-answer');
-
-      questionBtn.addEventListener('click', () => {
-        const isOpen = item.classList.contains('is-open');
-
-        // Optionnel : fermer les autres
-        faqItems.forEach((other) => {
-          if (other !== item) {
-            other.classList.remove('is-open');
-            const otherAnswer = other.querySelector('.faq-answer');
-            if (otherAnswer) {
-              otherAnswer.style.maxHeight = null;
-            }
-          }
-        });
-
-        if (!isOpen) {
-          item.classList.add('is-open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        } else {
-          item.classList.remove('is-open');
-          answer.style.maxHeight = null;
-        }
-      });
-    });
-
-    // Pour que les réponses soient bien calculées si la fenêtre change de taille
-    window.addEventListener('resize', () => {
-      document.querySelectorAll('.faq-item.is-open .faq-answer').forEach((answer) => {
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      });
-    });
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
