@@ -7,15 +7,34 @@ window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
 
+// Navbar : apparition au scroll + toggle mobile
+const navbar = document.querySelector('.navbar');
+const navbarToggle = document.querySelector('.navbar-toggle');
+const navbarLinks = document.querySelector('.navbar-links');
 const scrollTopButton = document.querySelector('.scroll-top');
 
 window.addEventListener('scroll', () => {
-  if (!scrollTopButton) return;
-  if (window.scrollY > 320) {
-    scrollTopButton.classList.add('is-visible');
-  } else {
-    scrollTopButton.classList.remove('is-visible');
+  const scrolled = window.scrollY > 320;
+
+  if (navbar) {
+    navbar.classList.toggle('is-visible', scrolled);
   }
+  if (scrollTopButton) {
+    scrollTopButton.classList.toggle('is-visible', scrolled);
+  }
+});
+
+navbarToggle?.addEventListener('click', () => {
+  const isOpen = navbarLinks.classList.toggle('is-open');
+  navbarToggle.setAttribute('aria-expanded', isOpen);
+});
+
+// Fermer le menu mobile au clic sur un lien
+navbarLinks?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    navbarLinks.classList.remove('is-open');
+    navbarToggle?.setAttribute('aria-expanded', 'false');
+  });
 });
 
 scrollTopButton?.addEventListener('click', () => {
@@ -33,46 +52,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.18,
+    threshold: 0.15,
   }
 );
 sections.forEach((section) => observer.observe(section));
-
-// FAQ accordéon
-const faqItems = document.querySelectorAll('.faq-item');
-
-faqItems.forEach((item) => {
-  const questionBtn = item.querySelector('.faq-question');
-  const answer = item.querySelector('.faq-answer');
-
-  questionBtn.addEventListener('click', () => {
-    const isOpen = item.classList.contains('is-open');
-
-    // Optionnel : fermer les autres
-    faqItems.forEach((other) => {
-      if (other !== item) {
-        other.classList.remove('is-open');
-        const otherAnswer = other.querySelector('.faq-answer');
-        if (otherAnswer) {
-          otherAnswer.style.maxHeight = null;
-        }
-      }
-    });
-
-    if (!isOpen) {
-      item.classList.add('is-open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-    } else {
-      item.classList.remove('is-open');
-      answer.style.maxHeight = null;
-    }
-  });
-});
-
-// Pour que les réponses soient bien calculées si la fenêtre change de taille
-window.addEventListener('resize', () => {
-  document.querySelectorAll('.faq-item.is-open .faq-answer').forEach((answer) => {
-    answer.style.maxHeight = answer.scrollHeight + 'px';
-  });
-});
-

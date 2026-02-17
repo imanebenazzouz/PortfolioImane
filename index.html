@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio – Imane Benazzouz</title>
+  <meta name="theme-color" content="#000000">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,10 +14,25 @@
   </head>
   <body>
 
+  <!-- NAVBAR -->
+  <nav class="navbar" aria-label="Navigation principale">
+    <a href="#top" class="navbar-brand">Imane B.</a>
+    <button class="navbar-toggle" aria-label="Ouvrir le menu" aria-expanded="false">&#9776;</button>
+    <ul class="navbar-links">
+      <li><a href="#apropos">A propos</a></li>
+      <li><a href="#competences">Competences</a></li>
+      <li><a href="#realisations">Realisations</a></li>
+      <li><a href="#methode">Experiences</a></li>
+      <li><a href="#choisir">Pourquoi moi</a></li>
+      <li><a href="#faq">Contact</a></li>
+    </ul>
+  </nav>
+
   <!-- HERO / ACCUEIL -->
   <div id="top" class="hero">
-    <h1 class="hero-title">PORTFOLIO</h1>
-    <p class="hero-subtitle">Imane Benazzouz</p>
+    <h1 class="hero-title">IMANE BENAZZOUZ</h1>
+    <p class="hero-subtitle">Developpeuse Full-Stack & IA</p>
+    <p class="hero-tagline">Je conçois des solutions web performantes et intelligentes, du backend à l'interface utilisateur.</p>
 
     <div class="hero-buttons">
       <div class="hero-row">
@@ -56,7 +72,7 @@
             </p>
           </div>
           <div class="about-photo-card">
-            <img src="imane.png" alt="Photo d'Imane Benazzouz">
+            <img src="imane.png" alt="Photo d'Imane Benazzouz" loading="lazy">
           </div>
         </div>
       </div>
@@ -147,7 +163,7 @@
               >
                 <div>
                   <div class="realisations-thumb">
-                    <img src="namaste.png" alt="Aperçu du site Namaste Paris">
+                    <img src="namaste.png" alt="Aperçu du site Namaste Paris" loading="lazy">
                   </div>
                   <div class="realisations-tag">Restaurant</div>
                   <div class="realisations-title"><strong>Namaste Paris</strong></div>
@@ -167,7 +183,7 @@
               >
                 <div>
                   <div class="realisations-thumb">
-                    <img src="maisb.png" alt="Aperçu du site Maison Bianca">
+                    <img src="maisb.png" alt="Aperçu du site Maison Bianca" loading="lazy">
                   </div>
                   <div class="realisations-tag">Mariage</div>
                   <div class="realisations-title"><strong>Maison Bianca</strong></div>
@@ -187,7 +203,7 @@
               >
                 <div>
                   <div class="realisations-thumb">
-                    <img src="photogardenia.png" alt="Aperçu du projet Bien Être Gardenia">
+                    <img src="photogardenia.png" alt="Aperçu du projet Bien Être Gardenia" loading="lazy">
                   </div>
                   <div class="realisations-tag">E-commerce</div>
                   <div class="realisations-title"><strong>Bien Être Gardenia</strong></div>
@@ -207,7 +223,7 @@
               >
                 <div>
                   <div class="realisations-thumb">
-                    <img src="photoyourshape.png" alt="Aperçu du projet Your Shape">
+                    <img src="photoyourshape.png" alt="Aperçu du projet Your Shape" loading="lazy">
                   </div>
                   <div class="realisations-tag">E-commerce</div>
                   <div class="realisations-title"><strong>Your Shape</strong></div>
@@ -227,7 +243,7 @@
               >
                 <div>
                   <div class="realisations-thumb">
-                    <img src="plomb.png" alt="Aperçu du site Plomberie Asnières">
+                    <img src="plomb.png" alt="Aperçu du site Plomberie Asnières" loading="lazy">
                   </div>
                   <div class="realisations-tag">Plomberie</div>
                   <div class="realisations-title"><strong>Plomberie Asnières</strong></div>
@@ -241,7 +257,9 @@
               <!-- App Vélib' -->
               <div class="realisations-card">
                 <div>
-                  <div class="realisations-thumb"></div>
+                  <div class="realisations-thumb realisations-thumb--placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+                  </div>
                   <div class="realisations-tag">Application mobile</div>
                   <div class="realisations-title"><strong>App Vélib'</strong></div>
                   <p class="realisations-desc">
@@ -254,8 +272,10 @@
               <!-- Ikraa -->
               <div class="realisations-card">
                 <div>
-                  <div class="realisations-thumb"></div>
-                  <div class="realisations-tag">Application éducative</div>
+                  <div class="realisations-thumb realisations-thumb--placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  </div>
+                  <div class="realisations-tag">Application educative</div>
                   <div class="realisations-title"><strong>Ikraa</strong></div>
                   <p class="realisations-desc">
                     Application web éducative développée from scratch en Java, couvrant toutes les étapes du projet :
@@ -267,7 +287,9 @@
               <!-- WhoamAI -->
               <div class="realisations-card">
                 <div>
-                  <div class="realisations-thumb"></div>
+                  <div class="realisations-thumb realisations-thumb--placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.57-3.25 3.92L12 10v2"/><circle cx="12" cy="16" r="2"/><path d="M6 20a6 6 0 0 1 12 0"/></svg>
+                  </div>
                   <div class="realisations-tag">Intelligence artificielle</div>
                   <div class="realisations-title"><strong>WhoamAI</strong></div>
                   <p class="realisations-desc">
@@ -383,13 +405,33 @@
       <div>
         <h2 class="section-title">Contact</h2>
         <p class="section-subtitle">
-          Pour me joindre directement pour un projet, une opportunité ou une question, voici mes coordonnées.
+          Pour me joindre directement pour un projet, une opportunite ou une question, voici mes coordonnees.
         </p>
 
-        <div class="section-content">
-          <p><strong>Numéro :</strong> 06 67 65 03 12</p>
-          <p><strong>Mail :</strong> <a href="mailto:imvnenbz@gmail.com" style="color: inherit; text-decoration: underline;">imvnenbz@gmail.com</a></p>
-          <p><strong>Adresse :</strong> 35 rue Alexandre Founy, 94500</p>
+        <div class="contact-grid">
+          <a href="tel:+33667650312" class="contact-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <div class="contact-card-label">Telephone</div>
+              <div class="contact-card-value">06 67 65 03 12</div>
+            </div>
+          </a>
+
+          <a href="mailto:imvnenbz@gmail.com" class="contact-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <div class="contact-card-label">Email</div>
+              <div class="contact-card-value">imvnenbz@gmail.com</div>
+            </div>
+          </a>
+
+          <div class="contact-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <div class="contact-card-label">Adresse</div>
+              <div class="contact-card-value">35 rue Alexandre Founy, 94500</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -418,7 +460,12 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    © 2025 Imane Benazzouz — Tous droits réservés.
+    <ul class="footer-links">
+      <li><a href="https://github.com/imanebenazzouz" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      <li><a href="mailto:imvnenbz@gmail.com">Email</a></li>
+      <li><a href="#top">Retour en haut</a></li>
+    </ul>
+    <p>&copy; 2025 Imane Benazzouz &mdash; Tous droits reserves.</p>
   </footer>
 
   <!-- Bouton retour en haut -->
