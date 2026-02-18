@@ -1,0 +1,5 @@
+# Fichiers système
+.DS_Store
+
+# Worktrees / copies internes (évite les doublons dans le dépôt)
+.claude/
