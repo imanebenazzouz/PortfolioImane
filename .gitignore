@@ -3,3 +3,6 @@
 
 # Worktrees / copies internes (évite les doublons dans le dépôt)
 .claude/
+
+# PDF gardé en local uniquement (démo Your Shape en ligne)
+yourshape.pdf
